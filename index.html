@@ -1712,7 +1712,7 @@
                 modalRecommendations.style.display = 'none';
             }
 
-            // Reproductor
+            // ─── REPRODUCTOR (MEJORADO) ───
             if (detail.Type === 'Movie') {
                 const mediaSourceId = (detail.MediaSources && detail.MediaSources[0]) ? detail.MediaSources[0].Id : id;
                 const streamUrl =
@@ -1736,15 +1736,34 @@
                         </div>`;
                 }
 
+                // ---- HTML del reproductor con enlace para subtítulos ----
+                let subtitleNotice = '';
+                if (subtitleStreams.length === 0) {
+                    subtitleNotice = `
+                        <div class="no-video-note" style="display:flex; flex-wrap:wrap; gap:12px; align-items:center; justify-content:space-between; margin-top:12px;">
+                            <span><i class="fas fa-subtitle" style="color:var(--accent); margin-right:6px;"></i> Este archivo no tiene subtítulos guardados en el servidor.</span>
+                            <a href="https://www.opensubtitles.org/es/search/sublanguageid-spa" target="_blank" class="btn btn-primary" style="padding:6px 14px; font-size:0.8rem;">
+                                <i class="fas fa-search"></i> Buscar subtítulos
+                            </a>
+                        </div>
+                    `;
+                }
+
                 videoWrap.innerHTML = `
                         <video class="jf-video" controls preload="metadata" crossorigin="anonymous" autoplay>
                             <source src="${streamUrl}" type="video/mp4">
                             ${tracks}
                         </video>
-                        ${subtitleStreams.length === 0 ? '<div class="no-video-note">Este archivo no tiene subtítulos guardados en el servidor.</div>' : ''}
+                        ${subtitleNotice}
                         ${audioInfo}
                     `;
-                modalActions.innerHTML = '';
+
+                // Botón fijo para añadir subtítulos (siempre visible)
+                modalActions.innerHTML = `
+                        <a href="https://www.opensubtitles.org/es/search/sublanguageid-spa" target="_blank" class="btn btn-primary" style="padding:6px 14px; font-size:0.8rem;">
+                            <i class="fas fa-plus"></i> Añadir subtítulos
+                        </a>
+                    `;
             } else {
                 videoWrap.innerHTML =
                     `<div class="no-video-note">Las series se reproducen episodio por episodio directo en el servidor.</div>`;
