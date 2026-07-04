@@ -2306,8 +2306,7 @@
         }
 
         async function openModal(id) {
-            const basic = itemsById[id];
-            if (!basic) return;
+            const basic = itemsById[id] || null;
 
             // Limpiar reproductor anterior
             if (currentPlayer) {
@@ -2315,7 +2314,7 @@
                 currentPlayer = null;
             }
 
-            modalTitle.textContent = basic.Name;
+            modalTitle.textContent = basic?.Name || 'Cargando...';
             modalMeta.innerHTML = 'Cargando detalles…';
             modalGenres.innerHTML = '';
             modalOverview.textContent = '';
@@ -2324,9 +2323,9 @@
             modalRecommendations.style.display = 'none';
             videoWrap.innerHTML = '';
             modalActions.innerHTML = '';
-            modalBackdrop.src = basic.ImageTags && basic.ImageTags.Primary ?
-                `${JELLYFIN_URL}/Items/${id}/Images/Primary?maxWidth=800&tag=${basic.ImageTags.Primary}` :
-                '';
+            modalBackdrop.src = basic && basic.ImageTags && basic.ImageTags.Primary
+                ? `${JELLYFIN_URL}/Items/${id}/Images/Primary?maxWidth=800&tag=${basic.ImageTags.Primary}`
+                : '';
             overlay.classList.add('open');
 
             let detail;
@@ -2340,6 +2339,17 @@
             if (detail.BackdropImageTags && detail.BackdropImageTags.length > 0) {
                 modalBackdrop.src =
                     `${JELLYFIN_URL}/Items/${id}/Images/Backdrop/0?maxWidth=900&tag=${detail.BackdropImageTags[0]}`;
+            }
+
+            if (detail.Name) {
+                if (detail.Type === 'Episode') {
+                    const sNum = Number.isInteger(detail.ParentIndexNumber) ? detail.ParentIndexNumber : 0;
+                    const eNum = Number.isInteger(detail.IndexNumber) ? detail.IndexNumber : 0;
+                    const seriesName = detail.SeriesName ? `${detail.SeriesName} · ` : '';
+                    modalTitle.textContent = `${seriesName}S${String(sNum).padStart(2, '0')}E${String(eNum).padStart(2, '0')} · ${detail.Name}`;
+                } else {
+                    modalTitle.textContent = detail.Name;
+                }
             }
 
             const year = detail.ProductionYear || '';
@@ -2576,8 +2586,12 @@
                     const codecSummary = audioStreams
                         .map(a => `${(a.Codec || 'audio').toUpperCase()}${a.Channels ? ` ${a.Channels}ch` : ''}`)
                         .join(' · ');
+                    const langSummary = audioStreams
+                        .map(a => (a.Language || a.DisplayLanguage || 'und').toUpperCase())
+                        .join(' · ');
                     audioInfo = `<div style="color:var(--muted); font-size:0.8rem; margin-top:6px;">
                             <i class="fas fa-volume-up"></i> ${audioStreams.map(a => a.DisplayTitle || a.Language || 'Audio').join(' · ')}<br>
+                            <span style="font-size:0.74rem;">Idiomas: ${langSummary}</span><br>
                             <span style="font-size:0.74rem;">Codecs originales: ${codecSummary}</span>
                         </div>`;
                 }
@@ -2594,16 +2608,35 @@
                     audioStreams.forEach(a => {
                         const opt = document.createElement('option');
                         opt.value = a.Index;
-                        opt.textContent = a.DisplayTitle || `${a.Language || 'Audio'} (${a.Codec || ''})`;
+                        const language = (a.DisplayLanguage || a.Language || 'Audio').toUpperCase();
+                        const codec = (a.Codec || '').toUpperCase();
+                        const channels = a.Channels ? ` ${a.Channels}ch` : '';
+                        opt.textContent = `${language}${codec ? ` · ${codec}` : ''}${channels}`;
                         if (a.Index === selectedAudioIndex) opt.selected = true;
                         sel.appendChild(opt);
                     });
+                    const applyAudioBtn = document.createElement('button');
+                    applyAudioBtn.type = 'button';
+                    applyAudioBtn.className = 'btn btn-outline';
+                    applyAudioBtn.style.cssText = 'padding:6px 12px; font-size:0.78rem;';
+                    applyAudioBtn.innerHTML = '<i class="fas fa-language"></i> Aplicar audio';
+
+                    applyAudioBtn.addEventListener('click', () => {
+                        selectedAudioIndex = parseInt(sel.value, 10);
+                        hasFallenBackToTranscode = false;
+                        statusLine.textContent = 'Cambiando pista de audio...';
+                        loadSourceFor(selectedAudioIndex, selectedSubtitleIndex, false);
+                    });
+
+                    // Aplicacion rapida al cambiar en el select
                     sel.addEventListener('change', () => {
                         selectedAudioIndex = parseInt(sel.value, 10);
                         hasFallenBackToTranscode = false;
+                        statusLine.textContent = 'Cambiando pista de audio...';
                         loadSourceFor(selectedAudioIndex, selectedSubtitleIndex, false);
                     });
                     audioSelectWrap.appendChild(sel);
+                    audioSelectWrap.appendChild(applyAudioBtn);
                     videoWrap.appendChild(audioSelectWrap);
                 }
 
