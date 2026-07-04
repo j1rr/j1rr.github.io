@@ -987,6 +987,39 @@
             flex: 1;
         }
 
+        .subtitle-tools {
+            margin-top: 12px;
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 10px 12px;
+        }
+
+        .subtitle-switcher {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+
+        .subtitle-switcher select {
+            background: var(--bg2);
+            color: var(--text);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 7px 10px;
+            min-width: 240px;
+            font-size: 0.82rem;
+            outline: none;
+        }
+
+        .subtitle-switcher .subtitle-list {
+            width: 100%;
+            color: var(--muted);
+            font-size: 0.78rem;
+        }
+
         /* ── Footer ── */
         footer {
             text-align: center;
@@ -1771,19 +1804,64 @@
         }
 
         // ─── Función para cargar subtítulos desde archivo ───
-        function setupSubtitleUpload(videoElement) {
+        function setupSubtitleTools(videoElement, player) {
             const container = document.createElement('div');
-            container.className = 'subtitle-upload-area';
+            container.className = 'subtitle-tools';
+
+            const subtitleId = `subtitleFile-${Date.now()}`;
             container.innerHTML = `
-                    <label for="subtitleFile">
-                        <i class="fas fa-subtitle" style="color:var(--accent);"></i> Cargar subtítulos (.srt / .vtt)
-                    </label>
-                    <input type="file" id="subtitleFile" accept=".srt,.vtt,.ass" />
-                    <span class="file-name" id="subtitleFileName">Ningún archivo seleccionado</span>
+                    <div class="subtitle-switcher">
+                        <select id="subtitleSelect"></select>
+                        <button type="button" class="btn btn-outline" id="applySubtitleBtn" style="padding:6px 12px; font-size:0.78rem;">
+                            <i class="fas fa-closed-captioning"></i> Cambiar subtítulo
+                        </button>
+                        <div class="subtitle-list" id="subtitleList">Subtítulos disponibles: cargando...</div>
+                    </div>
+                    <div class="subtitle-upload-area">
+                        <label for="${subtitleId}">
+                            <i class="fas fa-subtitle" style="color:var(--accent);"></i> Cargar subtítulos (.srt / .vtt)
+                        </label>
+                        <input type="file" id="${subtitleId}" accept=".srt,.vtt,.ass" />
+                        <span class="file-name" id="subtitleFileName">Ningún archivo seleccionado</span>
+                    </div>
                 `;
 
-            const fileInput = container.querySelector('#subtitleFile');
+            const fileInput = container.querySelector(`#${subtitleId}`);
             const fileNameSpan = container.querySelector('#subtitleFileName');
+            const subtitleSelect = container.querySelector('#subtitleSelect');
+            const applySubtitleBtn = container.querySelector('#applySubtitleBtn');
+            const subtitleList = container.querySelector('#subtitleList');
+
+            const refreshSubtitleSelector = () => {
+                const tracks = player.textTracks();
+                const options = ['<option value="-1">Sin subtítulos</option>'];
+                const labels = [];
+                let selectedIndex = -1;
+
+                for (let i = 0; i < tracks.length; i++) {
+                    const tr = tracks[i];
+                    const label = tr.label || tr.language || `Pista ${i + 1}`;
+                    labels.push(label);
+                    if (tr.mode === 'showing') selectedIndex = i;
+                    options.push(`<option value="${i}">${label}</option>`);
+                }
+
+                subtitleSelect.innerHTML = options.join('');
+                subtitleSelect.value = String(selectedIndex);
+                subtitleList.textContent = labels.length
+                    ? `Subtítulos disponibles: ${labels.join(' · ')}`
+                    : 'Subtítulos disponibles: ninguno';
+            };
+
+            const applySubtitleSelection = () => {
+                const selected = parseInt(subtitleSelect.value, 10);
+                const tracks = player.textTracks();
+                for (let i = 0; i < tracks.length; i++) {
+                    tracks[i].mode = (i === selected) ? 'showing' : 'disabled';
+                }
+            };
+
+            applySubtitleBtn.addEventListener('click', applySubtitleSelection);
 
             fileInput.addEventListener('change', function(e) {
                 const file = e.target.files[0];
@@ -1794,52 +1872,42 @@
                 reader.onload = function(ev) {
                     try {
                         const content = ev.target.result;
-                        // Creamos un blob con el contenido del archivo
                         const blob = new Blob([content], { type: 'text/vtt' });
                         const url = URL.createObjectURL(blob);
 
-                        // Buscamos el track de subtítulos en el video
-                        const videoEl = videoElement;
-                        if (!videoEl) return;
+                        if (!videoElement) return;
 
-                        // Eliminamos tracks anteriores
-                        const oldTracks = videoEl.querySelectorAll('track');
-                        oldTracks.forEach(t => t.remove());
+                        // Mantener pistas del servidor y reemplazar solo la subida local previa.
+                        const oldCustomTracks = videoElement.querySelectorAll('track[data-custom-sub="true"]');
+                        oldCustomTracks.forEach(t => t.remove());
 
-                        // Creamos un nuevo track
-                        const track = document.createElement('track');
-                        track.kind = 'subtitles';
-                        track.label = 'Subtítulos cargados';
-                        track.srclang = 'es';
-                        track.src = url;
-                        track.default = true;
-                        videoEl.appendChild(track);
+                        const customTrack = document.createElement('track');
+                        customTrack.kind = 'subtitles';
+                        customTrack.label = `Archivo: ${file.name}`;
+                        customTrack.srclang = 'es';
+                        customTrack.src = url;
+                        customTrack.dataset.customSub = 'true';
+                        videoElement.appendChild(customTrack);
 
-                        // Forzamos al reproductor a cargar los subtítulos
-                        const player = videojs(videoEl);
-                        player.ready(function() {
-                            // Recargar tracks
-                            player.textTracks().forEach(t => {
-                                if (t.label === 'Subtítulos cargados') {
-                                    t.mode = 'showing';
-                                }
-                            });
-                        });
+                        player.load();
+                        setTimeout(() => {
+                            refreshSubtitleSelector();
+                            subtitleSelect.value = String(player.textTracks().length - 1);
+                            applySubtitleSelection();
+                        }, 150);
 
-                        // Notificamos al usuario
-                        const notice = container.querySelector('.file-name');
-                        notice.textContent = `✅ Subtítulos cargados: ${file.name}`;
-                        notice.style.color = '#5b9aff';
+                        fileNameSpan.textContent = `✅ Subtítulos cargados: ${file.name}`;
+                        fileNameSpan.style.color = '#5b9aff';
                     } catch (err) {
                         console.error('Error al cargar subtítulos:', err);
-                        const notice = container.querySelector('.file-name');
-                        notice.textContent = '❌ Error al cargar el archivo.';
-                        notice.style.color = '#ff9c9c';
+                        fileNameSpan.textContent = '❌ Error al cargar el archivo.';
+                        fileNameSpan.style.color = '#ff9c9c';
                     }
                 };
                 reader.readAsText(file);
             });
 
+            refreshSubtitleSelector();
             return container;
         }
 
@@ -1958,6 +2026,11 @@
                 const mediaSourceId = (detail.MediaSources && detail.MediaSources[0]) ? detail.MediaSources[0].Id : id;
                 const streamUrl =
                     `${JELLYFIN_URL}/Videos/${id}/stream?static=true&mediaSourceId=${mediaSourceId}&api_key=${API_KEY}`;
+                const hlsStreamUrl =
+                    `${JELLYFIN_URL}/Videos/${id}/master.m3u8?api_key=${API_KEY}&MediaSourceId=${mediaSourceId}&AudioCodec=aac,ac3,eac3`;
+
+                const audioStreams = (detail.MediaStreams || []).filter(s => s.Type === 'Audio');
+                const hasEac3 = audioStreams.some(a => ['eac3', 'ec-3', 'ac3'].includes((a.Codec || '').toLowerCase()));
 
                 // Creamos el contenedor del video
                 const videoContainer = document.createElement('div');
@@ -1971,11 +2044,23 @@
                 videoEl.setAttribute('playsinline', 'true');
                 videoEl.setAttribute('preload', 'auto');
 
-                // Fuente del video
-                const source = document.createElement('source');
-                source.src = streamUrl;
-                source.type = 'video/mp4'; // Jellyfin siempre entrega MP4 transcodificado
-                videoEl.appendChild(source);
+                // Fuentes del video (HLS primero cuando detectamos EAC3/AC3).
+                const sourcePriority = hasEac3
+                    ? [
+                        { src: hlsStreamUrl, type: 'application/x-mpegURL' },
+                        { src: streamUrl, type: 'video/mp4' }
+                    ]
+                    : [
+                        { src: streamUrl, type: 'video/mp4' },
+                        { src: hlsStreamUrl, type: 'application/x-mpegURL' }
+                    ];
+
+                sourcePriority.forEach(srcDef => {
+                    const source = document.createElement('source');
+                    source.src = srcDef.src;
+                    source.type = srcDef.type;
+                    videoEl.appendChild(source);
+                });
 
                 // Subtítulos desde Jellyfin
                 const subtitleStreams = (detail.MediaStreams || []).filter(s => s.Type === 'Subtitle');
@@ -2002,11 +2087,15 @@
                 videoWrap.appendChild(videoContainer);
 
                 // Información de audio
-                const audioStreams = (detail.MediaStreams || []).filter(s => s.Type === 'Audio');
                 let audioInfo = '';
                 if (audioStreams.length > 0) {
+                    const codecSummary = audioStreams
+                        .map(a => `${(a.Codec || 'audio').toUpperCase()}${a.Channels ? ` ${a.Channels}ch` : ''}`)
+                        .join(' · ');
+                    const eac3Notice = hasEac3 ? '<span style="color:#9cc4ff;"> · Modo EAC3/AC3 compatible activado</span>' : '';
                     audioInfo = `<div style="color:var(--muted); font-size:0.8rem; margin-top:6px;">
-                            <i class="fas fa-volume-up"></i> ${audioStreams.map(a => a.DisplayTitle || a.Language || 'Audio').join(' · ')}
+                            <i class="fas fa-volume-up"></i> ${audioStreams.map(a => a.DisplayTitle || a.Language || 'Audio').join(' · ')}<br>
+                            <span style="font-size:0.74rem;">Codecs: ${codecSummary}${eac3Notice}</span>
                         </div>`;
                 }
                 // Agregar info de audio después del reproductor
@@ -2037,18 +2126,16 @@
                 // Guardar referencia al player
                 currentPlayer = player;
 
+                let switchedToHlsFallback = false;
+
                 // Manejar error de reproducción (por si el formato no es soportado)
                 player.on('error', function() {
                     console.warn('Error en el reproductor. Posiblemente el formato no es compatible directamente.');
-                    // Intentar recargar con tipo genérico
-                    const videoEl = document.getElementById('jellyfin-player');
-                    if (videoEl) {
-                        const source = videoEl.querySelector('source');
-                        if (source) {
-                            source.type = 'application/vnd.apple.mpegurl'; // Intenta HLS
-                            player.load();
-                        }
-                    }
+                    if (switchedToHlsFallback) return;
+                    switchedToHlsFallback = true;
+                    player.src({ src: hlsStreamUrl, type: 'application/x-mpegURL' });
+                    player.load();
+                    player.play().catch(() => {});
                 });
 
                 // Esperar a que el player esté listo para agregar el área de subtítulos
@@ -2057,8 +2144,8 @@
                     if (container) {
                         const videoElement = document.getElementById('jellyfin-player');
                         if (videoElement) {
-                            const uploadUI = setupSubtitleUpload(videoElement);
-                            container.appendChild(uploadUI);
+                            const subtitleTools = setupSubtitleTools(videoElement, player);
+                            container.appendChild(subtitleTools);
                         }
                     }
                 });
