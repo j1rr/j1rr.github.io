@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>CV - Juan Antonio Rivera</title>
+    <meta name="description" content="Curriculum de Juan Antonio Rivera Rodriguez, estudiante de Ingeniería en Desarrollo de Software especializándose en DevOps, Docker, Cloud y automatización." />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet" />
     <style>
@@ -507,8 +508,14 @@
 
     <div class="cv-container">
 
-        <!-- ─── LANGUAGE TOGGLE ─── -->
-        <div class="lang-toggle-wrap">
+        <!-- ─── LANGUAGE TOGGLE + VOLVER + IMPRIMIR ─── -->
+        <div class="lang-toggle-wrap" style="display:flex; gap:10px; align-items:center;">
+            <a href="index.html" class="lang-toggle" style="text-decoration:none;">
+                <i class="fas fa-arrow-left"></i> Portafolio
+            </a>
+            <button class="lang-toggle" onclick="window.print()">
+                <i class="fas fa-file-pdf"></i> Guardar como PDF
+            </button>
             <button class="lang-toggle" id="langToggle">
                 <i class="fas fa-globe"></i> <span id="langLabel">ES</span>
             </button>
@@ -568,9 +575,9 @@
                         hasta túneles de red seguros.
                     </p>
                     <p class="lang-es">
-                        Este portafolio es un testimonio de ello: un servidor multimedia completamente funcional
-                        ejecutándose en Docker, expuesto a través de Cloudflare Tunnel y consumiendo su propia API REST
-                        — todo construido como un viaje de aprendizaje y una muestra de habilidades prácticas.
+                        Este portafolio es la prueba: un servidor multimedia funcionando en Docker, expuesto con
+                        Cloudflare Tunnel, resolviendo su propio problema de CORS y consumiendo su propia API en
+                        vivo. Nada de plantillas ni tutoriales copiados — cada parte la debuggeé yo mismo.
                     </p>
                     <p class="lang-en hidden">
                         I am a Software Engineering student at Universidad Tecmilenio (MAPS model) with a strong
@@ -578,9 +585,9 @@
                         scratch — from containerized applications to secure networking tunnels.
                     </p>
                     <p class="lang-en hidden">
-                        This portfolio is a testament to that: a fully functional media server running on Docker,
-                        exposed via Cloudflare Tunnel, and consuming its own REST API — all built as a learning
-                        journey and a showcase of practical skills.
+                        This portfolio is the proof: a media server running on Docker, exposed through Cloudflare
+                        Tunnel, solving its own CORS problem, and consuming its own live API. No templates or
+                        copied tutorials — I debugged every piece of it myself.
                     </p>
                 </div>
             </div>
@@ -629,24 +636,26 @@
                 </div>
             </div>
 
-            <!-- ─── EXPERIENCE ─── -->
+            <!-- ─── ENFOQUE ACTUAL ─── -->
             <div class="cv-section full-width">
-                <div class="section-title lang-es"><i class="fas fa-briefcase"></i> Experiencia</div>
-                <div class="section-title lang-en hidden"><i class="fas fa-briefcase"></i> Experience</div>
+                <div class="section-title lang-es"><i class="fas fa-compass"></i> Enfoque actual</div>
+                <div class="section-title lang-en hidden"><i class="fas fa-compass"></i> Current Focus</div>
                 <div class="exp-item">
-                    <h4 class="lang-es">Desarrollador Freelance</h4>
-                    <h4 class="lang-en hidden">Freelance Developer</h4>
-                    <div class="role lang-es">Autónomo · 2026 – Presente</div>
-                    <div class="role lang-en hidden">Self‑employed · 2026 – Present</div>
-                    <div class="period lang-es">Proyectos personalizados para clientes</div>
-                    <div class="period lang-en hidden">Custom projects for clients</div>
+                    <h4 class="lang-es">Estudiante de Ingeniería en Desarrollo de Software</h4>
+                    <h4 class="lang-en hidden">Software Engineering Student</h4>
+                    <div class="role lang-es">Universidad Tecmilenio · 2026 – Presente</div>
+                    <div class="role lang-en hidden">Universidad Tecmilenio · 2026 – Present</div>
+                    <div class="period lang-es">Buscando primera posición junior en Cloud Support / DevOps</div>
+                    <div class="period lang-en hidden">Looking for a first junior role in Cloud Support / DevOps</div>
                     <p class="lang-es">
-                        Desarrollo de proyectos personalizados para clientes. Especializado en la creación de infraestructura
-                        contenerizada, despliegue de aplicaciones web y automatización de tareas.
+                        Curso la especialización en DevOps dentro del modelo MAPS. Mientras termino la carrera,
+                        construyo proyectos propios de infraestructura para aprender haciendo — el servidor de
+                        streaming documentado abajo es el más completo hasta ahora.
                     </p>
                     <p class="lang-en hidden">
-                        Development of custom projects for clients. Specialised in containerised infrastructure,
-                        web application deployment, and task automation.
+                        Currently specializing in DevOps within the MAPS model. While finishing my degree, I build
+                        my own infrastructure projects to learn by doing — the streaming server documented below
+                        is the most complete one so far.
                     </p>
                 </div>
             </div>
@@ -658,92 +667,92 @@
                 <div class="cert-list">
                     <!-- 1. Desarrollo Full Stack -->
                     <div class="cert-item">
-                        <img src="https://images.credly.com/images/fdecf3ca-1fa7-46c9-93c7-e203f718579b/linkedin_thumb_blob" alt="Desarrollo Full Stack" />
+                        <img src="https://images.credly.com/images/fdecf3ca-1fa7-46c9-93c7-e203f718579b/linkedin_thumb_blob" alt="Desarrollo Full Stack" onerror=\"this.onerror=null;this.src='https://placehold.co/64x64/1e2430/8e95a5?text=%F0%9F%8F%85'\" />
                         <div class="info"><h4>Desarrollo Full Stack</h4><div class="issuer">Universidad Tecmilenio</div></div>
                     </div>
                     <!-- 2. Fundamentos de DevOps -->
                     <div class="cert-item">
-                        <img src="https://images.credly.com/images/18d30937-4c1b-442c-83a1-543265bcf02f/linkedin_thumb_image.png" alt="Fundamentos de DevOps" />
+                        <img src="https://images.credly.com/images/18d30937-4c1b-442c-83a1-543265bcf02f/linkedin_thumb_image.png" alt="Fundamentos de DevOps" onerror=\"this.onerror=null;this.src='https://placehold.co/64x64/1e2430/8e95a5?text=%F0%9F%8F%85'\" />
                         <div class="info"><h4>Fundamentos de DevOps</h4><div class="issuer">Universidad Tecmilenio</div></div>
                     </div>
                     <!-- 3. Gestión de Redes -->
                     <div class="cert-item">
-                        <img src="https://images.credly.com/images/c0e5a9ce-f523-483c-8daa-4c37019ad7aa/linkedin_thumb_blob" alt="Gestión de Redes" />
+                        <img src="https://images.credly.com/images/c0e5a9ce-f523-483c-8daa-4c37019ad7aa/linkedin_thumb_blob" alt="Gestión de Redes" onerror=\"this.onerror=null;this.src='https://placehold.co/64x64/1e2430/8e95a5?text=%F0%9F%8F%85'\" />
                         <div class="info"><h4>Gestión de Redes</h4><div class="issuer">Universidad Tecmilenio</div></div>
                     </div>
                     <!-- 4. AWS Cloud Operations -->
                     <div class="cert-item">
-                        <img src="https://images.credly.com/images/07e7ba52-aea4-431f-ba2d-a4113efd1d5a/linkedin_thumb_blob" alt="AWS Cloud Operations" />
+                        <img src="https://images.credly.com/images/07e7ba52-aea4-431f-ba2d-a4113efd1d5a/linkedin_thumb_blob" alt="AWS Cloud Operations" onerror=\"this.onerror=null;this.src='https://placehold.co/64x64/1e2430/8e95a5?text=%F0%9F%8F%85'\" />
                         <div class="info"><h4>AWS Cloud Operations</h4><div class="issuer">Amazon Web Services</div></div>
                     </div>
                     <!-- 5. Networking Basics (Cisco) - ¡IMAGEN CORREGIDA! -->
                     <div class="cert-item">
-                        <img src="https://images.credly.com/images/5bdd6a39-3e03-4444-9510-ecff80c9ce79/linkedin_thumb_image.png" alt="Networking Basics" />
+                        <img src="https://images.credly.com/images/5bdd6a39-3e03-4444-9510-ecff80c9ce79/linkedin_thumb_image.png" alt="Networking Basics" onerror=\"this.onerror=null;this.src='https://placehold.co/64x64/1e2430/8e95a5?text=%F0%9F%8F%85'\" />
                         <div class="info"><h4>Networking Basics</h4><div class="issuer">Cisco</div></div>
                     </div>
                     <!-- 6. Web Development Fundamentals -->
                     <div class="cert-item">
-                        <img src="https://images.credly.com/images/0c1c6eed-818c-4f78-bfaa-7ea8704c863a/linkedin_thumb_image.png" alt="Web Development Fundamentals" />
+                        <img src="https://images.credly.com/images/0c1c6eed-818c-4f78-bfaa-7ea8704c863a/linkedin_thumb_image.png" alt="Web Development Fundamentals" onerror=\"this.onerror=null;this.src='https://placehold.co/64x64/1e2430/8e95a5?text=%F0%9F%8F%85'\" />
                         <div class="info"><h4>Web Development Fundamentals</h4><div class="issuer">IBM SkillsBuild</div></div>
                     </div>
                     <!-- 7. Ciencia de Datos -->
                     <div class="cert-item">
-                        <img src="https://images.credly.com/images/4013b068-cd88-443a-b109-292cad70e121/linkedin_thumb_blob" alt="Ciencia de Datos" />
+                        <img src="https://images.credly.com/images/4013b068-cd88-443a-b109-292cad70e121/linkedin_thumb_blob" alt="Ciencia de Datos" onerror=\"this.onerror=null;this.src='https://placehold.co/64x64/1e2430/8e95a5?text=%F0%9F%8F%85'\" />
                         <div class="info"><h4>Ciencia de Datos</h4><div class="issuer">Universidad Tecmilenio</div></div>
                     </div>
                     <!-- 8. Computación en la Nube -->
                     <div class="cert-item">
-                        <img src="https://images.credly.com/images/da491c56-6aef-47a6-9ae4-eb3bbfa9b60e/linkedin_thumb_blob" alt="Computación en la Nube" />
+                        <img src="https://images.credly.com/images/da491c56-6aef-47a6-9ae4-eb3bbfa9b60e/linkedin_thumb_blob" alt="Computación en la Nube" onerror=\"this.onerror=null;this.src='https://placehold.co/64x64/1e2430/8e95a5?text=%F0%9F%8F%85'\" />
                         <div class="info"><h4>Computación en la Nube</h4><div class="issuer">Universidad Tecmilenio</div></div>
                     </div>
                     <!-- 9. Fundamentos de Programación -->
                     <div class="cert-item">
-                        <img src="https://images.credly.com/images/0871bc81-7152-4340-8367-8fbe3896c43f/linkedin_thumb_blob" alt="Fundamentos de Programación" />
+                        <img src="https://images.credly.com/images/0871bc81-7152-4340-8367-8fbe3896c43f/linkedin_thumb_blob" alt="Fundamentos de Programación" onerror=\"this.onerror=null;this.src='https://placehold.co/64x64/1e2430/8e95a5?text=%F0%9F%8F%85'\" />
                         <div class="info"><h4>Fundamentos de Programación</h4><div class="issuer">Universidad Tecmilenio</div></div>
                     </div>
                     <!-- 10. Probabilidad y Estadística -->
                     <div class="cert-item">
-                        <img src="https://images.credly.com/images/c187e134-e491-4f6b-9083-decb5e0bd265/linkedin_thumb_blob" alt="Probabilidad y Estadística" />
+                        <img src="https://images.credly.com/images/c187e134-e491-4f6b-9083-decb5e0bd265/linkedin_thumb_blob" alt="Probabilidad y Estadística" onerror=\"this.onerror=null;this.src='https://placehold.co/64x64/1e2430/8e95a5?text=%F0%9F%8F%85'\" />
                         <div class="info"><h4>Probabilidad y Estadística</h4><div class="issuer">Universidad Tecmilenio</div></div>
                     </div>
                     <!-- 11. Programación Orientada a Objetos -->
                     <div class="cert-item">
-                        <img src="https://images.credly.com/images/dc201a38-6b7c-4ffd-85cc-0d337b22bc05/linkedin_thumb_blob" alt="Programación Orientada a Objetos" />
+                        <img src="https://images.credly.com/images/dc201a38-6b7c-4ffd-85cc-0d337b22bc05/linkedin_thumb_blob" alt="Programación Orientada a Objetos" onerror=\"this.onerror=null;this.src='https://placehold.co/64x64/1e2430/8e95a5?text=%F0%9F%8F%85'\" />
                         <div class="info"><h4>Programación Orientada a Objetos</h4><div class="issuer">Universidad Tecmilenio</div></div>
                     </div>
                     <!-- 12. Sistemas Operativos -->
                     <div class="cert-item">
-                        <img src="https://images.credly.com/images/24c929ed-4d14-4226-975f-116ee666d81e/linkedin_thumb_blob" alt="Sistemas Operativos" />
+                        <img src="https://images.credly.com/images/24c929ed-4d14-4226-975f-116ee666d81e/linkedin_thumb_blob" alt="Sistemas Operativos" onerror=\"this.onerror=null;this.src='https://placehold.co/64x64/1e2430/8e95a5?text=%F0%9F%8F%85'\" />
                         <div class="info"><h4>Sistemas Operativos</h4><div class="issuer">Universidad Tecmilenio</div></div>
                     </div>
                     <!-- 13. Inglés 5 -->
                     <div class="cert-item">
-                        <img src="https://images.credly.com/images/251db325-c323-4cbf-927d-9970329fdebb/linkedin_thumb_image.png" alt="Inglés 5" />
+                        <img src="https://images.credly.com/images/251db325-c323-4cbf-927d-9970329fdebb/linkedin_thumb_image.png" alt="Inglés 5" onerror=\"this.onerror=null;this.src='https://placehold.co/64x64/1e2430/8e95a5?text=%F0%9F%8F%85'\" />
                         <div class="info"><h4>Inglés 5</h4><div class="issuer">Universidad Tecmilenio</div></div>
                     </div>
                     <!-- 14. Metodologías Ágiles -->
                     <div class="cert-item">
-                        <img src="https://images.credly.com/images/2cc5aef9-1698-4a6c-9a22-6b81b1a6fe51/linkedin_thumb_blob" alt="Metodologías Ágiles" />
+                        <img src="https://images.credly.com/images/2cc5aef9-1698-4a6c-9a22-6b81b1a6fe51/linkedin_thumb_blob" alt="Metodologías Ágiles" onerror=\"this.onerror=null;this.src='https://placehold.co/64x64/1e2430/8e95a5?text=%F0%9F%8F%85'\" />
                         <div class="info"><h4>Metodologías Ágiles</h4><div class="issuer">Universidad Tecmilenio</div></div>
                     </div>
                     <!-- 15. Bases de Datos -->
                     <div class="cert-item">
-                        <img src="https://images.credly.com/images/3e8f3768-bb7b-426f-ba22-e214da27aca5/linkedin_thumb_blob" alt="Bases de Datos" />
+                        <img src="https://images.credly.com/images/3e8f3768-bb7b-426f-ba22-e214da27aca5/linkedin_thumb_blob" alt="Bases de Datos" onerror=\"this.onerror=null;this.src='https://placehold.co/64x64/1e2430/8e95a5?text=%F0%9F%8F%85'\" />
                         <div class="info"><h4>Bases de Datos</h4><div class="issuer">Universidad Tecmilenio</div></div>
                     </div>
                     <!-- 16. Estructura de Datos -->
                     <div class="cert-item">
-                        <img src="https://images.credly.com/images/868fef28-16a5-4ed4-92f6-ef43da8fec4a/linkedin_thumb_blob" alt="Estructura de Datos" />
+                        <img src="https://images.credly.com/images/868fef28-16a5-4ed4-92f6-ef43da8fec4a/linkedin_thumb_blob" alt="Estructura de Datos" onerror=\"this.onerror=null;this.src='https://placehold.co/64x64/1e2430/8e95a5?text=%F0%9F%8F%85'\" />
                         <div class="info"><h4>Estructura de Datos</h4><div class="issuer">Universidad Tecmilenio</div></div>
                     </div>
                     <!-- 17. Introduction to Data Science -->
                     <div class="cert-item">
-                        <img src="https://images.credly.com/images/b38a42e0-dc58-4ce2-b6c0-28d978e8aaad/linkedin_thumb_image.png" alt="Introduction to Data Science" />
+                        <img src="https://images.credly.com/images/b38a42e0-dc58-4ce2-b6c0-28d978e8aaad/linkedin_thumb_image.png" alt="Introduction to Data Science" onerror=\"this.onerror=null;this.src='https://placehold.co/64x64/1e2430/8e95a5?text=%F0%9F%8F%85'\" />
                         <div class="info"><h4>Introduction to Data Science</h4><div class="issuer">Cisco</div></div>
                     </div>
                     <!-- 18. Python Essentials 1 -->
                     <div class="cert-item">
-                        <img src="https://images.credly.com/images/68c0b94d-f6ac-40b1-a0e0-921439eb092e/linkedin_thumb_image.png" alt="Python Essentials 1" />
+                        <img src="https://images.credly.com/images/68c0b94d-f6ac-40b1-a0e0-921439eb092e/linkedin_thumb_image.png" alt="Python Essentials 1" onerror=\"this.onerror=null;this.src='https://placehold.co/64x64/1e2430/8e95a5?text=%F0%9F%8F%85'\" />
                         <div class="info"><h4>Python Essentials 1</h4><div class="issuer">Cisco</div></div>
                     </div>
                 </div>

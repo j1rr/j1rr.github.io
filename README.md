@@ -7,6 +7,40 @@ expuesta a internet de forma segura, y consumida en vivo desde esta misma págin
 
 **🔗 Demo en vivo:** https://death-zip.github.io
 **🔗 Servidor Jellyfin:** https://media.jarr.cc.cd
+**🔗 CV interactivo:** https://death-zip.github.io/cv.html
+
+---
+
+## Cómo está organizado el sitio
+
+Todo el sitio es un único flujo, no páginas sueltas:
+
+```
+index.html (portafolio)
+   │
+   ├── Hero → botón "Ver CV" ────────────► cv.html
+   │                                          │
+   │                                          ├── botón "Guardar como PDF"
+   │                                          │   (usa los estilos @media print
+   │                                          │    ya definidos, sin backend)
+   │                                          │
+   │                                          └── botón "← Portafolio" (regresa)
+   │
+   └── Sección "Proyecto destacado" ────────► consume en vivo la API de
+                                               media.jarr.cc.cd (Jellyfin)
+```
+
+- **`index.html`** es la puerta de entrada: presentación, educación, certificaciones y el
+  proyecto en vivo.
+- **`cv.html`** es un CV completo, bilingüe (ES/EN), pensado para leerse en pantalla o
+  imprimirse directo a PDF desde el navegador (`Ctrl+P` o el botón dedicado) — sin necesitar
+  generar y mantener un PDF estático aparte.
+- El **proyecto destacado** dentro del portafolio no es una captura de pantalla ni una
+  descripción: es la biblioteca real de mi servidor Jellyfin, consumida en vivo por el
+  navegador de quien visite la página.
+
+Ambos documentos comparten paleta de colores, tipografía (Inter) y tono — se navegan como
+una sola experiencia, no como archivos independientes.
 
 ---
 
@@ -110,7 +144,9 @@ autorepara sin que yo tenga que estar pendiente.
 
 ```
 .
-├── index.html           # Portafolio + cliente que consume la API de Jellyfin
+├── index.html            # Portafolio + cliente que consume la API de Jellyfin
+├── cv.html               # CV interactivo, bilingüe, imprimible a PDF
+├── 1773352902571.jpg     # Foto de perfil usada en portafolio y CV
 ├── nginx-cors.conf       # Configuración del proxy CORS
 ├── docker-compose.yml    # Definición de los servicios (jellyfin + cors-proxy)
 ├── reactivar.sh          # Script de verificación/recuperación del stack
