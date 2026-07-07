@@ -4,18 +4,14 @@
     <script>(function(){try{var t=localStorage.getItem('jar-theme');if(t==='light'){document.documentElement.className='theme-light';}}catch(e){}})();</script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>CV - Juan Antonio Rivera</title>
-    <meta name="description" content="CV de Juan Antonio Rivera Rodriguez. Perfil junior remoto en Cloud Support / DevOps con experiencia practica en Docker, Linux, Cloudflare Tunnel, APIs REST y automatizacion." />
+    <title>CV · Juan Antonio Rivera · Software Engineer</title>
+    <meta name="description" content="CV de Juan Antonio Rivera Rodriguez: estudiante de Ingeniería en Software con enfoque en Cloud, IA, DevOps y WordPress. Disponible para rol junior remoto." />
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%230a0c10'/%3E%3Ctext x='50' y='68' font-family='Arial, sans-serif' font-size='58' font-weight='700' fill='%235b9aff' text-anchor='middle'%3EJ%3C/text%3E%3C/svg%3E" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet" />
     <style>
         /* ── Reset y base ── */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
+        * { margin:0; padding:0; box-sizing:border-box; }
         html.theme-default {
             --bg: #0a0c10;
             --bg2: #11141a;
@@ -28,7 +24,6 @@
             --chip-bg: #1e2430;
             --chip-text: #bcc4d4;
         }
-
         html.theme-light {
             --bg: #f4f6fa;
             --bg2: #ffffff;
@@ -41,7 +36,6 @@
             --chip-bg: #eef1f6;
             --chip-text: #3a4250;
         }
-
         body {
             font-family: 'Inter', -apple-system, system-ui, sans-serif;
             background: var(--bg);
@@ -52,7 +46,6 @@
             line-height: 1.5;
             transition: background 0.3s, color 0.3s;
         }
-
         .cv-container {
             max-width: 1100px;
             width: 100%;
@@ -65,7 +58,7 @@
         }
         .theme-default .cv-container { box-shadow: 0 20px 60px rgba(0, 0, 0, 0.7); }
 
-        /* ── Language Toggle ── */
+        /* ── Language Toggle y temas ── */
         .lang-toggle-wrap {
             position: absolute;
             top: 20px;
@@ -76,7 +69,6 @@
             flex-wrap: wrap;
             justify-content: flex-end;
         }
-
         .lang-toggle {
             background: var(--chip-bg);
             border: 1px solid var(--border);
@@ -92,26 +84,13 @@
             gap: 8px;
             text-decoration: none;
         }
-
         .lang-toggle:hover {
             border-color: var(--accent);
             background: var(--border);
         }
-
-        .lang-toggle i {
-            color: var(--accent);
-        }
-
-        /* ── Ocultar idiomas ── */
-        .lang-es,
-        .lang-en {
-            transition: opacity 0.2s ease;
-        }
-
-        .lang-es.hidden,
-        .lang-en.hidden {
-            display: none;
-        }
+        .lang-toggle i { color: var(--accent); }
+        .lang-es, .lang-en { transition: opacity 0.2s ease; }
+        .lang-es.hidden, .lang-en.hidden { display: none; }
 
         /* ── Layout ── */
         .cv-header {
@@ -122,20 +101,15 @@
             border-bottom: 1px solid var(--border);
             margin-bottom: 32px;
         }
-
-        .cv-avatar {
-            flex-shrink: 0;
-        }
-
+        .cv-avatar { flex-shrink: 0; }
         .cv-avatar img {
             width: 120px;
             height: 120px;
             border-radius: 50%;
             object-fit: cover;
             border: 3px solid var(--accent);
-            box-shadow: 0 0 30px rgba(91, 154, 255, 0.2);
+            box-shadow: 0 0 30px rgba(91,154,255,0.2);
         }
-
         .cv-title h1 {
             font-size: 2.2rem;
             font-weight: 700;
@@ -152,20 +126,17 @@
             background-clip: text;
             color: transparent;
         }
-
         .cv-title .subhead {
             color: var(--accent);
             font-size: 1rem;
             font-weight: 500;
             margin-bottom: 8px;
         }
-
         .cv-title .tagline {
             color: var(--muted);
             font-size: 0.9rem;
             max-width: 480px;
         }
-
         .cv-contact {
             margin-left: auto;
             text-align: right;
@@ -173,7 +144,6 @@
             color: var(--muted);
             flex-shrink: 0;
         }
-
         .cv-contact a {
             color: var(--accent);
             text-decoration: none;
@@ -181,11 +151,7 @@
             margin-bottom: 4px;
             transition: color 0.2s;
         }
-
-        .cv-contact a:hover {
-            color: var(--text);
-        }
-
+        .cv-contact a:hover { color: var(--text); }
         .cv-contact .icon {
             margin-right: 6px;
             width: 18px;
@@ -199,15 +165,8 @@
             grid-template-columns: 1fr 1fr;
             gap: 32px 40px;
         }
-
-        .cv-section {
-            margin-bottom: 24px;
-        }
-
-        .cv-section:last-child {
-            margin-bottom: 0;
-        }
-
+        .cv-section { margin-bottom: 24px; }
+        .cv-section:last-child { margin-bottom: 0; }
         .cv-section .section-title {
             font-size: 0.85rem;
             font-weight: 600;
@@ -226,10 +185,7 @@
             line-height: 1.7;
             margin-bottom: 12px;
         }
-
-        .cv-about p:last-child {
-            margin-bottom: 0;
-        }
+        .cv-about p:last-child { margin-bottom: 0; }
 
         /* ── Skills ── */
         .skills-grid {
@@ -237,7 +193,6 @@
             flex-wrap: wrap;
             gap: 8px;
         }
-
         .skill-tag {
             background: var(--chip-bg);
             border: 1px solid var(--border);
@@ -247,24 +202,21 @@
             color: var(--chip-text);
             transition: all 0.2s;
         }
-
         .skill-tag:hover {
             border-color: var(--accent);
             color: var(--text);
         }
-
         .skill-tag i {
             margin-right: 4px;
             color: var(--accent);
         }
 
-        /* ── CERTIFICATIONS (tarjetas grandes con toggle) ── */
+        /* ── Certifications ── */
         .cert-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(180px,1fr));
             gap: 16px;
         }
-
         .cert-card {
             background: var(--card);
             border: 1px solid var(--border);
@@ -276,13 +228,11 @@
             flex-direction: column;
             align-items: center;
         }
-
         .cert-card:hover {
             border-color: var(--accent);
             transform: translateY(-4px);
-            box-shadow: 0 8px 25px rgba(91, 154, 255, 0.15);
+            box-shadow: 0 8px 25px rgba(91,154,255,0.15);
         }
-
         .cert-card img {
             width: 72px;
             height: 72px;
@@ -293,28 +243,21 @@
             margin-bottom: 10px;
             border: 1px solid var(--border);
         }
-
         .cert-card h4 {
             font-size: 0.8rem;
             font-weight: 600;
             color: var(--text);
             line-height: 1.3;
         }
-
         .cert-card .issuer {
             font-size: 0.7rem;
             color: var(--muted);
         }
-
-        .cert-card.hidden {
-            display: none;
-        }
-
+        .cert-card.hidden { display: none; }
         .cert-more-btn {
             margin-top: 20px;
             text-align: center;
         }
-
         .cert-more-btn button {
             background: transparent;
             border: 1px solid var(--accent);
@@ -326,96 +269,57 @@
             cursor: pointer;
             transition: all 0.2s;
         }
-
         .cert-more-btn button:hover {
             background: var(--accent);
             color: #fff;
         }
 
-        /* ── Experience ── */
-        .exp-item {
-            margin-bottom: 16px;
-        }
-
-        .exp-item:last-child {
-            margin-bottom: 0;
-        }
-
+        /* ── Experience / Projects ── */
+        .exp-item { margin-bottom: 16px; }
+        .exp-item:last-child { margin-bottom: 0; }
         .exp-item h4 {
             font-size: 0.95rem;
             font-weight: 600;
             color: var(--text);
         }
-
         .exp-item .role {
             color: var(--accent);
             font-size: 0.85rem;
             font-weight: 500;
         }
-
         .exp-item .period {
             color: var(--muted);
             font-size: 0.78rem;
             margin-bottom: 4px;
         }
-
         .exp-item p {
             color: var(--chip-text);
             font-size: 0.85rem;
             line-height: 1.6;
         }
 
-        /* ── Education ── */
-        .edu-item h4 {
-            font-size: 0.95rem;
-            font-weight: 600;
-            color: var(--text);
-        }
-
-        .edu-item .school {
-            color: var(--accent);
-            font-size: 0.85rem;
-        }
-
-        .edu-item .period {
-            color: var(--muted);
-            font-size: 0.78rem;
-            margin-bottom: 4px;
-        }
-
-        .edu-item p {
-            color: var(--chip-text);
-            font-size: 0.85rem;
-            line-height: 1.6;
-        }
-
-        /* ── PROJECT (con diagrama de arquitectura animado) ── */
+        /* ── Proyectos destacados (tarjetas) ── */
         .project-item {
             background: var(--card);
             border: 1px solid var(--border);
             border-radius: 12px;
             padding: 20px 24px;
             transition: border-color 0.3s;
+            margin-bottom: 20px;
         }
-
-        .project-item:hover {
-            border-color: var(--accent);
-        }
-
+        .project-item:hover { border-color: var(--accent); }
         .project-item h4 {
             font-size: 1.1rem;
             font-weight: 700;
             color: var(--text);
             margin-bottom: 4px;
         }
-
         .project-item .tech {
             display: flex;
             flex-wrap: wrap;
             gap: 6px;
             margin: 6px 0 12px;
         }
-
         .project-item .tech span {
             background: var(--chip-bg);
             padding: 2px 14px;
@@ -424,14 +328,12 @@
             color: var(--muted);
             border: 1px solid var(--border);
         }
-
         .project-item p {
             color: var(--chip-text);
             font-size: 0.88rem;
             line-height: 1.7;
             margin-bottom: 12px;
         }
-
         .project-item .project-links a {
             color: var(--accent);
             text-decoration: none;
@@ -440,13 +342,12 @@
             margin-right: 16px;
             transition: color 0.2s;
         }
-
         .project-item .project-links a:hover {
             color: var(--text);
             text-decoration: underline;
         }
 
-        /* ─── DIAGRAMA DE ARQUITECTURA ANIMADO ─── */
+        /* ─── Diagrama de arquitectura (opcional) ─── */
         .arch-diagram {
             margin-top: 16px;
             padding: 16px;
@@ -459,7 +360,6 @@
             overflow: hidden;
             position: relative;
         }
-
         .arch-diagram .flow-row {
             display: flex;
             align-items: center;
@@ -468,7 +368,6 @@
             gap: 16px 8px;
             width: 100%;
         }
-
         .arch-node {
             background: var(--card);
             border: 1px solid var(--border);
@@ -484,29 +383,21 @@
             transition: all 0.3s;
             box-shadow: 0 2px 8px rgba(0,0,0,0.3);
         }
-
-        .arch-node i {
-            color: var(--accent);
-            font-size: 1rem;
-        }
-
+        .arch-node i { color: var(--accent); font-size: 1rem; }
         .arch-node:hover {
             border-color: var(--accent);
             transform: scale(1.05);
         }
-
         .arch-arrow {
             color: var(--accent);
             font-size: 1.2rem;
             animation: pulse-arrow 1.8s infinite;
             opacity: 0.7;
         }
-
         @keyframes pulse-arrow {
             0%, 100% { transform: scale(1); opacity: 0.7; }
             50% { transform: scale(1.3); opacity: 1; }
         }
-
         .arch-label {
             color: var(--accent);
             font-size: 0.6rem;
@@ -519,17 +410,15 @@
         /* ── Remote Readiness ── */
         .readiness-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(200px,1fr));
             gap: 10px;
         }
-
         .readiness-item {
             background: var(--card);
             border: 1px solid var(--border);
             border-radius: 10px;
             padding: 10px 12px;
         }
-
         .readiness-item .k {
             color: var(--muted);
             font-size: 0.73rem;
@@ -537,7 +426,6 @@
             letter-spacing: 0.8px;
             margin-bottom: 2px;
         }
-
         .readiness-item .v {
             color: var(--text);
             font-size: 0.84rem;
@@ -545,196 +433,69 @@
             line-height: 1.4;
         }
 
-        /* ── Full-width sections ── */
-        .full-width {
-            grid-column: 1 / -1;
-        }
+        /* ── Full-width ── */
+        .full-width { grid-column: 1 / -1; }
 
         /* ── Responsive ── */
-        @media (max-width: 768px) {
-            .cv-container {
-                padding: 24px 16px;
-            }
-
+        @media (max-width:768px) {
+            .cv-container { padding: 24px 16px; }
             .cv-header {
                 flex-direction: column;
                 align-items: center;
                 text-align: center;
                 gap: 16px;
             }
-
             .cv-contact {
                 text-align: center;
                 margin-left: 0;
                 width: 100%;
             }
-
-            .cv-grid {
-                grid-template-columns: 1fr;
-                gap: 16px;
-            }
-
-            .full-width {
-                grid-column: 1;
-            }
-
-            .cv-avatar img {
-                width: 96px;
-                height: 96px;
-            }
-
-            .cv-title h1 {
-                font-size: 1.8rem;
-            }
-
+            .cv-grid { grid-template-columns: 1fr; gap: 16px; }
+            .full-width { grid-column: 1; }
+            .cv-avatar img { width: 96px; height: 96px; }
+            .cv-title h1 { font-size: 1.8rem; }
             .lang-toggle-wrap {
                 position: static;
                 justify-content: center;
                 margin-bottom: 16px;
             }
-
-            .cert-grid {
-                grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-            }
-
-            .arch-diagram .flow-row {
-                gap: 8px;
-            }
-
-            .arch-node {
-                font-size: 0.65rem;
-                padding: 6px 10px;
-            }
-
-            .arch-arrow {
-                font-size: 1rem;
-            }
+            .cert-grid { grid-template-columns: repeat(auto-fill, minmax(140px,1fr)); }
+            .arch-diagram .flow-row { gap: 8px; }
+            .arch-node { font-size: 0.65rem; padding: 6px 10px; }
+            .arch-arrow { font-size: 1rem; }
         }
-
         @media print {
-            body {
-                background: #fff;
-                padding: 0;
-            }
-            .cv-container {
-                background: #fff;
-                border: none;
-                box-shadow: none;
-                padding: 40px 48px;
-                border-radius: 0;
-            }
-            .cv-title h1 {
-                background: none;
-                color: #0a0c10;
-                -webkit-text-fill-color: #0a0c10;
-            }
-            .cv-title .subhead {
-                color: #2563eb;
-            }
-            .cv-title .tagline {
-                color: #4b5563;
-            }
-            .cv-contact a {
-                color: #2563eb;
-            }
-            .cv-contact .icon {
-                color: #2563eb;
-            }
-            .cv-section .section-title {
-                color: #2563eb;
-                border-bottom-color: #d1d5db;
-            }
-            .cv-about p {
-                color: #374151;
-            }
-            .skill-tag {
-                background: #f3f4f6;
-                border-color: #d1d5db;
-                color: #1f2937;
-            }
-            .skill-tag i {
-                color: #2563eb;
-            }
-            .cert-card {
-                background: #f9fafb;
-                border-color: #e5e7eb;
-            }
-            .cert-card h4 {
-                color: #111827;
-            }
-            .cert-card .issuer {
-                color: #6b7280;
-            }
-            .exp-item h4 {
-                color: #111827;
-            }
-            .exp-item .role {
-                color: #2563eb;
-            }
-            .exp-item .period {
-                color: #6b7280;
-            }
-            .exp-item p {
-                color: #374151;
-            }
-            .edu-item h4 {
-                color: #111827;
-            }
-            .edu-item .school {
-                color: #2563eb;
-            }
-            .edu-item .period {
-                color: #6b7280;
-            }
-            .edu-item p {
-                color: #374151;
-            }
-            .project-item {
-                background: #f9fafb;
-                border-color: #e5e7eb;
-            }
-            .project-item h4 {
-                color: #111827;
-            }
-            .project-item .tech span {
-                background: #f3f4f6;
-                color: #4b5563;
-                border-color: #d1d5db;
-            }
-            .project-item p {
-                color: #374151;
-            }
-            .project-item .project-links a {
-                color: #2563eb;
-            }
-            .cert-card img {
-                background: #fff;
-            }
-            .arch-diagram {
-                background: #f3f4f6;
-                border-color: #d1d5db;
-            }
-            .arch-node {
-                background: #fff;
-                border-color: #d1d5db;
-                color: #1f2937;
-            }
-            .arch-node i {
-                color: #2563eb;
-            }
-            .arch-arrow {
-                color: #2563eb;
-                animation: none;
-            }
-            .lang-toggle-wrap {
-                display: none;
-            }
-            .cert-more-btn button {
-                display: none;
-            }
-            .cert-card.hidden {
-                display: flex !important;
-            }
+            body { background: #fff; padding: 0; }
+            .cv-container { background: #fff; border: none; box-shadow: none; padding: 40px 48px; border-radius: 0; }
+            .cv-title h1 { background: none; color: #0a0c10; -webkit-text-fill-color: #0a0c10; }
+            .cv-title .subhead { color: #2563eb; }
+            .cv-title .tagline { color: #4b5563; }
+            .cv-contact a { color: #2563eb; }
+            .cv-contact .icon { color: #2563eb; }
+            .cv-section .section-title { color: #2563eb; border-bottom-color: #d1d5db; }
+            .cv-about p { color: #374151; }
+            .skill-tag { background: #f3f4f6; border-color: #d1d5db; color: #1f2937; }
+            .skill-tag i { color: #2563eb; }
+            .cert-card { background: #f9fafb; border-color: #e5e7eb; }
+            .cert-card h4 { color: #111827; }
+            .cert-card .issuer { color: #6b7280; }
+            .exp-item h4 { color: #111827; }
+            .exp-item .role { color: #2563eb; }
+            .exp-item .period { color: #6b7280; }
+            .exp-item p { color: #374151; }
+            .project-item { background: #f9fafb; border-color: #e5e7eb; }
+            .project-item h4 { color: #111827; }
+            .project-item .tech span { background: #f3f4f6; color: #4b5563; border-color: #d1d5db; }
+            .project-item p { color: #374151; }
+            .project-item .project-links a { color: #2563eb; }
+            .cert-card img { background: #fff; }
+            .arch-diagram { background: #f3f4f6; border-color: #d1d5db; }
+            .arch-node { background: #fff; border-color: #d1d5db; color: #1f2937; }
+            .arch-node i { color: #2563eb; }
+            .arch-arrow { color: #2563eb; animation: none; }
+            .lang-toggle-wrap { display: none; }
+            .cert-more-btn button { display: none; }
+            .cert-card.hidden { display: flex !important; }
         }
     </style>
 </head>
@@ -766,15 +527,15 @@
             <div class="cv-title">
                 <h1 class="lang-es">Juan Antonio Rivera Rodriguez</h1>
                 <h1 class="lang-en hidden">Juan Antonio Rivera Rodriguez</h1>
-                <div class="subhead lang-es">Junior Cloud Support / DevOps · Docker &amp; Linux</div>
-                <div class="subhead lang-en hidden">Junior Cloud Support / DevOps · Docker &amp; Linux</div>
+                <div class="subhead lang-es">Software Engineering · Cloud · IA · Automatización</div>
+                <div class="subhead lang-en hidden">Software Engineering · Cloud · AI · Automation</div>
                 <div class="tagline lang-es">
                     Estudiante de Ingeniería en Desarrollo de Software con enfoque en infraestructura cloud,
-                    automatización y operación de sistemas. Disponible para mi primera oportunidad remota
+                    inteligencia artificial, DevOps y WordPress. Disponible para mi primera oportunidad remota
                     de tiempo completo.
                 </div>
                 <div class="tagline lang-en hidden">
-                    Software Engineering student focused on cloud infrastructure, automation, and systems operations.
+                    Software Engineering student focused on cloud infrastructure, AI, DevOps, and WordPress.
                     Available for my first full-time remote junior role.
                 </div>
             </div>
@@ -794,6 +555,9 @@
                 <a href="https://media.jarr.cc.cd" target="_blank">
                     <span class="icon"><i class="fas fa-server"></i></span> Jellyfin Server
                 </a>
+                <a href="http://juanantonioportafolio.freepage.cc" target="_blank">
+                    <span class="icon"><i class="fab fa-wordpress"></i></span> WordPress
+                </a>
             </div>
         </header>
 
@@ -806,42 +570,80 @@
                 <div class="section-title lang-en hidden"><i class="fas fa-user"></i> About Me</div>
                 <div class="cv-about">
                     <p class="lang-es">
-                        Estudio Ingeniería en Desarrollo de Software en la Universidad Tecmilenio, especializándome
-                        en DevOps dentro del modelo MAPS. Me interesa la infraestructura en la nube y la automatización,
-                        y prefiero aprender construyendo sistemas completos en vez de solo seguir tutoriales.
+                        Estudio Ingeniería en Desarrollo de Software en la Universidad Tecmilenio, con enfoque en
+                        infraestructura cloud, automatización, inteligencia artificial y arquitectura de software.
+                        He construido temas WordPress desde cero, servidores Docker en producción, automatizado
+                        tareas con Bash y Python, y explorado aplicaciones de IA en proyectos personales.
                     </p>
                     <p class="lang-es">
-                        Mi portafolio es un ejemplo de eso: un servidor multimedia en Docker, expuesto con Cloudflare
-                        Tunnel, con su propio proxy CORS y consumiendo su propia API en tiempo real. Cada parte tuvo
-                        un problema real que documenté al resolverlo — el detalle completo está en el README del repositorio.
+                        Mi portafolio incluye un servidor multimedia con Jellyfin expuesto con Cloudflare Tunnel,
+                        un tema WordPress 100% personalizado con Gutenberg blocks y Custom Post Types,
+                        scripts de automatización para backups y despliegues, y experimentos con APIs de IA
+                        y procesamiento de lenguaje natural. Todo documentado y subido a GitHub.
                     </p>
                     <p class="lang-en hidden">
-                        I'm studying Software Engineering at Universidad Tecmilenio, specializing in DevOps within
-                        the MAPS model. I care about cloud infrastructure and automation, and I'd rather learn by
-                        building complete systems than by following tutorials.
+                        I'm studying Software Engineering at Universidad Tecmilenio, focusing on cloud infrastructure,
+                        automation, AI, and software architecture. I've built custom WordPress themes from scratch,
+                        Docker servers in production, automated tasks with Bash and Python, and explored AI
+                        applications in personal projects.
                     </p>
                     <p class="lang-en hidden">
-                        My portfolio is an example of that: a media server on Docker, exposed through Cloudflare
-                        Tunnel, with its own CORS proxy, consuming its own API in real time. Every part hit a real
-                        problem I documented while fixing it — the full write-up is in the repository README.
+                        My portfolio includes a Jellyfin media server exposed via Cloudflare Tunnel, a 100% custom
+                        WordPress theme with Gutenberg blocks and Custom Post Types, automation scripts for backups
+                        and deployments, and experiments with AI APIs and natural language processing.
                     </p>
                 </div>
             </div>
 
-            <!-- ─── PROJECT DESTACADO (con diagrama de arquitectura) ─── -->
+            <!-- ─── PROYECTOS DESTACADOS ─── -->
             <div class="cv-section full-width">
-                <div class="section-title lang-es"><i class="fas fa-code"></i> Proyecto destacado</div>
-                <div class="section-title lang-en hidden"><i class="fas fa-code"></i> Featured Project</div>
+                <div class="section-title lang-es"><i class="fas fa-code"></i> Proyectos destacados</div>
+                <div class="section-title lang-en hidden"><i class="fas fa-code"></i> Featured Projects</div>
+
+                <!-- Proyecto 1: WordPress -->
+                <div class="project-item">
+                    <h4>WordPress Portfolio · Tema Personalizado</h4>
+                    <div class="tech">
+                        <span>WordPress</span><span>PHP</span><span>React</span><span>Gutenberg</span><span>Nginx</span><span>InfinityFree</span>
+                    </div>
+                    <p class="lang-es">
+                        Tema de WordPress construido desde cero en PHP, sin frameworks ni plantillas de terceros.
+                        Registra un Custom Post Type para listar proyectos, un bloque personalizado de Gutenberg
+                        hecho con la API de bloques de WordPress y un sistema de menús de navegación configurable.
+                        Fue mi primer acercamiento a cómo funciona WordPress por dentro, más allá de instalar plugins.
+                    </p>
+                    <p class="lang-en hidden">
+                        A WordPress theme built from scratch in PHP, with no third‑party frameworks or page builders.
+                        It registers a Custom Post Type to list projects, a custom Gutenberg block built with the
+                        WordPress block API, and a configurable navigation menu system.
+                    </p>
+                    <!-- Diagrama de arquitectura WordPress -->
+                    <div class="arch-diagram">
+                        <div class="flow-row">
+                            <span class="arch-node"><i class="fas fa-user"></i> Usuario</span>
+                            <span class="arch-arrow"><i class="fas fa-arrow-right"></i></span>
+                            <span class="arch-node"><i class="fas fa-globe"></i> InfinityFree</span>
+                            <span class="arch-arrow"><i class="fas fa-arrow-right"></i></span>
+                            <span class="arch-node"><i class="fas fa-server"></i> Nginx</span>
+                            <span class="arch-arrow"><i class="fas fa-arrow-right"></i></span>
+                            <span class="arch-node"><i class="fab fa-wordpress"></i> WordPress</span>
+                            <span class="arch-arrow"><i class="fas fa-arrow-right"></i></span>
+                            <span class="arch-node"><i class="fas fa-database"></i> MySQL</span>
+                        </div>
+                        <div class="arch-label lang-es">WordPress · PHP 8.2 · Nginx · MySQL</div>
+                        <div class="arch-label lang-en hidden">WordPress · PHP 8.2 · Nginx · MySQL</div>
+                    </div>
+                    <div class="project-links">
+                        <a href="http://juanantonioportafolio.freepage.cc" target="_blank"><i class="fas fa-external-link-alt"></i> Ver sitio en vivo</a>
+                        <a href="https://github.com/death-zip/wordpress-portafolio" target="_blank"><i class="fab fa-github"></i> Ver código en GitHub</a>
+                    </div>
+                </div>
+
+                <!-- Proyecto 2: Docker Media Server -->
                 <div class="project-item">
                     <h4>Docker Media Server Lab · Infraestructura como Código</h4>
                     <div class="tech">
-                        <span>Docker</span>
-                        <span>Cloudflare</span>
-                        <span>Jellyfin</span>
-                        <span>Nginx</span>
-                        <span>Linux</span>
-                        <span>WSL2</span>
-                        <span>REST API</span>
+                        <span>Docker</span><span>Cloudflare</span><span>Jellyfin</span><span>Nginx</span><span>Linux</span><span>WSL2</span>
                     </div>
                     <p class="lang-es">
                         Servidor de streaming auto‑hospedado con Jellyfin, orquestado con Docker Compose.
@@ -853,10 +655,7 @@
                         Self‑hosted streaming server with Jellyfin, orchestrated with Docker Compose.
                         Nginx acts as a reverse proxy solving CORS issues, and Cloudflare Tunnel exposes
                         the service securely with automatic HTTPS, no router ports open.
-                        All code and documentation are available on GitHub.
                     </p>
-
-                    <!-- DIAGRAMA DE ARQUITECTURA ANIMADO -->
                     <div class="arch-diagram">
                         <div class="flow-row">
                             <span class="arch-node"><i class="fas fa-user"></i> Usuario</span>
@@ -872,8 +671,7 @@
                         <div class="arch-label lang-es">Flujo de tráfico · HTTPS · CORS resuelto</div>
                         <div class="arch-label lang-en hidden">Traffic flow · HTTPS · CORS resolved</div>
                     </div>
-
-                    <div class="project-links" style="margin-top:14px;">
+                    <div class="project-links">
                         <a href="https://media.jarr.cc.cd" target="_blank"><i class="fas fa-external-link-alt"></i> Ver servidor en vivo</a>
                         <a href="https://github.com/death-zip/death-zip-jellyfin-cloud-infra" target="_blank"><i class="fab fa-github"></i> Ver infraestructura en GitHub</a>
                     </div>
@@ -885,6 +683,10 @@
                 <div class="section-title lang-es"><i class="fas fa-bolt"></i> Habilidades Técnicas</div>
                 <div class="section-title lang-en hidden"><i class="fas fa-bolt"></i> Technical Skills</div>
                 <div class="skills-grid">
+                    <span class="skill-tag"><i class="fab fa-wordpress"></i> WordPress</span>
+                    <span class="skill-tag"><i class="fab fa-php"></i> PHP</span>
+                    <span class="skill-tag"><i class="fas fa-code"></i> React</span>
+                    <span class="skill-tag"><i class="fab fa-js"></i> JavaScript</span>
                     <span class="skill-tag"><i class="fab fa-docker"></i> Docker</span>
                     <span class="skill-tag"><i class="fas fa-layer-group"></i> Docker Compose</span>
                     <span class="skill-tag"><i class="fab fa-linux"></i> Linux</span>
@@ -892,24 +694,22 @@
                     <span class="skill-tag"><i class="fas fa-code-branch"></i> DevOps</span>
                     <span class="skill-tag"><i class="fas fa-network-wired"></i> Networking</span>
                     <span class="skill-tag"><i class="fab fa-python"></i> Python</span>
-                    <span class="skill-tag"><i class="fab fa-js"></i> JavaScript</span>
-                    <span class="skill-tag"><i class="fab fa-html5"></i> HTML</span>
-                    <span class="skill-tag"><i class="fab fa-css3-alt"></i> CSS</span>
+                    <span class="skill-tag"><i class="fab fa-html5"></i> HTML5</span>
+                    <span class="skill-tag"><i class="fab fa-css3-alt"></i> CSS3</span>
                     <span class="skill-tag"><i class="fas fa-database"></i> SQL</span>
                     <span class="skill-tag"><i class="fas fa-code"></i> Bash</span>
-                    <span class="skill-tag"><i class="fas fa-terminal"></i> PowerShell</span>
                     <span class="skill-tag"><i class="fas fa-git-alt"></i> Git</span>
                     <span class="skill-tag"><i class="fab fa-aws"></i> AWS</span>
-                    <span class="skill-tag"><i class="fas fa-shield-alt"></i> Security</span>
+                    <span class="skill-tag"><i class="fas fa-shield-alt"></i> Seguridad</span>
                     <span class="skill-tag"><i class="fas fa-server"></i> Nginx</span>
                     <span class="skill-tag"><i class="fas fa-cogs"></i> WSL2</span>
                     <span class="skill-tag"><i class="fas fa-gears"></i> systemd</span>
-                    <span class="skill-tag"><i class="fas fa-terminal"></i> Shell Scripting</span>
-                    <span class="skill-tag"><i class="fas fa-code"></i> REST APIs</span>
-                    <span class="skill-tag"><i class="fas fa-flask"></i> Flask</span>
                     <span class="skill-tag"><i class="fas fa-file-code"></i> YAML</span>
                     <span class="skill-tag"><i class="fas fa-clock"></i> Cron</span>
                     <span class="skill-tag"><i class="fas fa-fire"></i> Firewall</span>
+                    <span class="skill-tag"><i class="fas fa-flask"></i> Flask</span>
+                    <span class="skill-tag"><i class="fas fa-code"></i> REST APIs</span>
+                    <span class="skill-tag"><i class="fas fa-robot"></i> IA / ML</span>
                 </div>
             </div>
 
@@ -917,17 +717,23 @@
             <div class="cv-section">
                 <div class="section-title lang-es"><i class="fas fa-graduation-cap"></i> Educación</div>
                 <div class="section-title lang-en hidden"><i class="fas fa-graduation-cap"></i> Education</div>
-                <div class="edu-item">
+                <div class="exp-item">
                     <h4 class="lang-es">Ingeniería en Desarrollo de Software</h4>
                     <h4 class="lang-en hidden">Software Engineering</h4>
-                    <div class="school">Universidad Tecmilenio · MAPS Model</div>
-                    <div class="period">2024 – Present</div>
-                    <p class="lang-es">Especialización en curso: DevOps Methodology. Coursework en cloud infrastructure,
-                    desarrollo web, redes y prácticas de CI/CD, aplicado en proyectos propios de
-                    contenerización y automatización.</p>
-                    <p class="lang-en hidden">Current specialization: DevOps Methodology. Coursework in cloud infrastructure,
-                    web development, networking, and CI/CD practices, applied in own projects of
-                    containerization and automation.</p>
+                    <div class="role">Universidad Tecmilenio · MAPS Model</div>
+                    <div class="period">2024 – Presente</div>
+                    <p class="lang-es">Especialización en curso: DevOps, Cloud, IA y Arquitectura de Software. Aplicación práctica en proyectos propios de contenerización, automatización, desarrollo WordPress e integración de IA.</p>
+                    <p class="lang-en hidden">Current specialization: DevOps, Cloud, AI, and Software Architecture. Practical application in own projects of containerization, automation, WordPress development, and AI integration.</p>
+                </div>
+            </div>
+
+            <!-- ─── CERTIFICATIONS ─── -->
+            <div class="cv-section full-width">
+                <div class="section-title lang-es"><i class="fas fa-certificate"></i> Certificaciones</div>
+                <div class="section-title lang-en hidden"><i class="fas fa-certificate"></i> Certifications</div>
+                <div class="cert-grid" id="certGrid"></div>
+                <div class="cert-more-btn">
+                    <button id="toggleCertsBtn" data-showing="false">Mostrar más</button>
                 </div>
             </div>
 
@@ -940,17 +746,17 @@
                     <h4 class="lang-en hidden">Software Engineering Student</h4>
                     <div class="role lang-es">Universidad Tecmilenio · 2024 – Presente</div>
                     <div class="role lang-en hidden">Universidad Tecmilenio · 2024 – Present</div>
-                    <div class="period lang-es">Buscando primera posición junior en Cloud Support / DevOps</div>
-                    <div class="period lang-en hidden">Looking for a first junior role in Cloud Support / DevOps</div>
+                    <div class="period lang-es">Buscando primera posición junior en Cloud, DevOps, IA o WordPress</div>
+                    <div class="period lang-en hidden">Looking for a first junior role in Cloud, DevOps, AI, or WordPress</div>
                     <p class="lang-es">
-                        Curso la especialización en DevOps dentro del modelo MAPS. Mientras termino la carrera,
-                        construyo proyectos propios de infraestructura para aprender haciendo, documentando cada
-                        decisión técnica y practicando colaboración asíncrona.
+                        Construyo proyectos reales: temas WordPress personalizados, servidores Docker en producción,
+                        scripts de automatización, APIs REST y experimentos con IA. Busco mi primera posición junior
+                        en Cloud, DevOps, desarrollo WordPress o áreas relacionadas con inteligencia artificial.
                     </p>
                     <p class="lang-en hidden">
-                        Currently specializing in DevOps within the MAPS model. While finishing my degree, I build
-                        my own infrastructure projects to learn by doing, documenting technical decisions and
-                        practicing asynchronous collaboration.
+                        I build real projects: custom WordPress themes, Docker servers in production, automation scripts,
+                        REST APIs, and AI experiments. Looking for my first junior role in Cloud, DevOps, WordPress
+                        development, or AI-related areas.
                     </p>
                 </div>
             </div>
@@ -973,29 +779,17 @@
                         <div class="v lang-en hidden">Mexico (UTC-6), flexible overlap</div>
                     </div>
                     <div class="readiness-item">
-                        <div class="k lang-es">Comunicacion</div>
+                        <div class="k lang-es">Comunicación</div>
                         <div class="k lang-en hidden">Communication</div>
-                        <div class="v lang-es">Documentacion clara y seguimiento</div>
+                        <div class="v lang-es">Documentación clara y seguimiento</div>
                         <div class="v lang-en hidden">Clear documentation and follow-through</div>
                     </div>
                     <div class="readiness-item">
                         <div class="k lang-es">Stack objetivo</div>
                         <div class="k lang-en hidden">Target stack</div>
-                        <div class="v lang-es">Linux, Docker, Cloud, APIs, observabilidad</div>
-                        <div class="v lang-en hidden">Linux, Docker, Cloud, APIs, observability</div>
+                        <div class="v lang-es">Linux, Docker, Cloud, APIs, IA, WordPress</div>
+                        <div class="v lang-en hidden">Linux, Docker, Cloud, APIs, AI, WordPress</div>
                     </div>
-                </div>
-            </div>
-
-            <!-- ─── CERTIFICATIONS (tarjetas grandes con toggle) ─── -->
-            <div class="cv-section full-width">
-                <div class="section-title lang-es"><i class="fas fa-certificate"></i> Certificaciones</div>
-                <div class="section-title lang-en hidden"><i class="fas fa-certificate"></i> Certifications</div>
-                <div class="cert-grid" id="certGrid">
-                    <!-- Las certificaciones se inyectarán con JavaScript para mantener el orden y el toggle -->
-                </div>
-                <div class="cert-more-btn">
-                    <button id="toggleCertsBtn" data-showing="false">Mostrar más</button>
                 </div>
             </div>
 
@@ -1006,21 +800,15 @@
     <script>
         // ─── LANGUAGE TOGGLE ───
         let currentLang = 'es';
-
         document.getElementById('langToggle').addEventListener('click', function() {
             currentLang = currentLang === 'es' ? 'en' : 'es';
             document.getElementById('langLabel').textContent = currentLang.toUpperCase();
-
-            document.querySelectorAll('.lang-es').forEach(el => {
-                el.classList.toggle('hidden', currentLang === 'en');
-            });
-            document.querySelectorAll('.lang-en').forEach(el => {
-                el.classList.toggle('hidden', currentLang === 'es');
-            });
+            document.querySelectorAll('.lang-es').forEach(el => el.classList.toggle('hidden', currentLang === 'en'));
+            document.querySelectorAll('.lang-en').forEach(el => el.classList.toggle('hidden', currentLang === 'es'));
             applyThemeLabel();
         });
 
-        // ─── THEME TOGGLE (shared with portfolio via localStorage) ───
+        // ─── THEME TOGGLE ───
         let currentTheme = document.documentElement.className === 'theme-light' ? 'light' : 'dark';
         function applyThemeLabel() {
             const icon = document.getElementById('themeIcon');
@@ -1041,7 +829,7 @@
         });
         applyThemeLabel();
 
-        // ─── CERTIFICACIONES (datos) ───
+        // ─── CERTIFICACIONES ───
         const certData = [
             { name: 'Desarrollo Full Stack', issuer: 'Universidad Tecmilenio', img: 'https://images.credly.com/images/fdecf3ca-1fa7-46c9-93c7-e203f718579b/linkedin_thumb_blob' },
             { name: 'Fundamentos de DevOps', issuer: 'Universidad Tecmilenio', img: 'https://images.credly.com/images/18d30937-4c1b-442c-83a1-543265bcf02f/linkedin_thumb_image.png' },
@@ -1065,29 +853,26 @@
 
         const VISIBLE_COUNT = 6;
         let showingAll = false;
+        const certGrid = document.getElementById('certGrid');
+        const toggleBtn = document.getElementById('toggleCertsBtn');
 
         function renderCerts(showAll) {
-            const grid = document.getElementById('certGrid');
             const items = showAll ? certData : certData.slice(0, VISIBLE_COUNT);
-            grid.innerHTML = items.map(cert => `
+            certGrid.innerHTML = items.map(cert => `
                 <div class="cert-card">
                     <img src="${cert.img}" alt="${cert.name}" onerror="this.onerror=null;this.src='https://placehold.co/72x72/1e2430/8e95a5?text=%F0%9F%8F%85'" />
                     <h4>${cert.name}</h4>
                     <div class="issuer">${cert.issuer}</div>
                 </div>
             `).join('');
-
-            const btn = document.getElementById('toggleCertsBtn');
-            btn.textContent = showAll ? 'Ver menos' : 'Mostrar más';
-            btn.dataset.showing = showAll ? 'true' : 'false';
+            toggleBtn.textContent = showAll ? 'Ver menos' : 'Mostrar más';
+            toggleBtn.dataset.showing = showAll ? 'true' : 'false';
         }
 
-        document.getElementById('toggleCertsBtn').addEventListener('click', function() {
+        toggleBtn.addEventListener('click', function() {
             showingAll = !showingAll;
             renderCerts(showingAll);
         });
-
-        // Render inicial
         renderCerts(false);
     </script>
 
