@@ -991,7 +991,7 @@
         // Función GET con proxy para evitar CORS
         async function jellyfinGet(path) {
             const target = `${JELLYFIN_URL}${path}`;
-            const proxyTarget = `${PROXY_URL}${target}`;
+            const proxyTarget = `https://corsproxy.io/?${encodeURIComponent(target)}`
             console.log(`🌐 Proxy request: ${proxyTarget}`);
             const res = await fetch(proxyTarget, { headers: { 'X-Emby-Token': API_KEY } });
             if (!res.ok) throw new Error(`HTTP ${res.status} - ${res.statusText}`);
