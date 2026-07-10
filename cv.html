@@ -4,8 +4,8 @@
     <script>(function(){try{var t=localStorage.getItem('jar-theme');if(t==='light'){document.documentElement.className='theme-light';}}catch(e){}})();</script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>CV · Juan Antonio Rivera · Software Engineer</title>
-    <meta name="description" content="CV de Juan Antonio Rivera Rodriguez: estudiante de Ingeniería en Software con enfoque en Cloud, IA, DevOps y WordPress. Disponible para rol junior remoto." />
+    <title>CV · Juan Antonio Rivera · Aspiring DevOps & Cloud Engineer</title>
+    <meta name="description" content="CV de Juan Antonio Rivera Rodriguez: estudiante de Ingeniería en Software con enfoque en Cloud, DevOps y automatización. Disponible para rol junior remoto." />
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%230a0c10'/%3E%3Ctext x='50' y='68' font-family='Arial, sans-serif' font-size='58' font-weight='700' fill='%235b9aff' text-anchor='middle'%3EJ%3C/text%3E%3C/svg%3E" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet" />
@@ -23,6 +23,9 @@
             --accent2: #8b7aff;
             --chip-bg: #1e2430;
             --chip-text: #bcc4d4;
+            --shadow: 0 8px 30px rgba(0,0,0,0.5);
+            --radius: 12px;
+            --transition: 0.25s ease;
         }
         html.theme-light {
             --bg: #f4f6fa;
@@ -35,6 +38,9 @@
             --accent2: #6c5ce7;
             --chip-bg: #eef1f6;
             --chip-text: #3a4250;
+            --shadow: 0 8px 30px rgba(16,24,39,0.08);
+            --radius: 12px;
+            --transition: 0.25s ease;
         }
         body {
             font-family: 'Inter', -apple-system, system-ui, sans-serif;
@@ -43,7 +49,7 @@
             display: flex;
             justify-content: center;
             padding: 40px 20px;
-            line-height: 1.5;
+            line-height: 1.6;
             transition: background 0.3s, color 0.3s;
         }
         .cv-container {
@@ -53,10 +59,10 @@
             border-radius: 16px;
             border: 1px solid var(--border);
             padding: 48px 52px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.35);
             position: relative;
         }
-        .theme-default .cv-container { box-shadow: 0 20px 60px rgba(0, 0, 0, 0.7); }
+        .theme-default .cv-container { box-shadow: 0 20px 60px rgba(0,0,0,0.7); }
 
         /* ── Language Toggle y temas ── */
         .lang-toggle-wrap {
@@ -83,6 +89,7 @@
             align-items: center;
             gap: 8px;
             text-decoration: none;
+            font-family: inherit;
         }
         .lang-toggle:hover {
             border-color: var(--accent);
@@ -99,7 +106,7 @@
             align-items: center;
             padding-bottom: 32px;
             border-bottom: 1px solid var(--border);
-            margin-bottom: 32px;
+            margin-bottom: 28px;
         }
         .cv-avatar { flex-shrink: 0; }
         .cv-avatar img {
@@ -118,7 +125,7 @@
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
-            margin-bottom: 4px;
+            margin-bottom: 2px;
         }
         .theme-light .cv-title h1 {
             background: linear-gradient(135deg, #12151c 35%, #2f6fed 100%);
@@ -130,7 +137,7 @@
             color: var(--accent);
             font-size: 1rem;
             font-weight: 500;
-            margin-bottom: 8px;
+            margin-bottom: 4px;
         }
         .cv-title .tagline {
             color: var(--muted);
@@ -157,6 +164,25 @@
             width: 18px;
             display: inline-block;
             color: var(--accent);
+        }
+
+        /* ── Perfil / Resumen ── */
+        .cv-profile {
+            background: var(--card);
+            border-left: 4px solid var(--accent);
+            padding: 16px 20px;
+            border-radius: var(--radius);
+            margin-bottom: 28px;
+            border: 1px solid var(--border);
+        }
+        .cv-profile p {
+            color: var(--chip-text);
+            font-size: 0.95rem;
+            line-height: 1.7;
+            margin: 0;
+        }
+        .cv-profile strong {
+            color: var(--text);
         }
 
         /* ── Grid ── */
@@ -211,6 +237,22 @@
             color: var(--accent);
         }
 
+        /* ── Soft Skills ── */
+        .soft-skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-top: 10px;
+        }
+        .soft-skills span {
+            background: var(--card);
+            border: 1px solid var(--border);
+            padding: 2px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            color: var(--muted);
+        }
+
         /* ── Certifications ── */
         .cert-grid {
             display: grid;
@@ -220,7 +262,7 @@
         .cert-card {
             background: var(--card);
             border: 1px solid var(--border);
-            border-radius: 12px;
+            border-radius: var(--radius);
             padding: 16px 12px;
             text-align: center;
             transition: all 0.3s;
@@ -268,6 +310,7 @@
             font-weight: 600;
             cursor: pointer;
             transition: all 0.2s;
+            font-family: inherit;
         }
         .cert-more-btn button:hover {
             background: var(--accent);
@@ -302,7 +345,7 @@
         .project-item {
             background: var(--card);
             border: 1px solid var(--border);
-            border-radius: 12px;
+            border-radius: var(--radius);
             padding: 20px 24px;
             transition: border-color 0.3s;
             margin-bottom: 20px;
@@ -347,7 +390,7 @@
             text-decoration: underline;
         }
 
-        /* ─── Diagrama de arquitectura (opcional) ─── */
+        /* ─── Diagrama de arquitectura ─── */
         .arch-diagram {
             margin-top: 16px;
             padding: 16px;
@@ -416,7 +459,7 @@
         .readiness-item {
             background: var(--card);
             border: 1px solid var(--border);
-            border-radius: 10px;
+            border-radius: var(--radius);
             padding: 10px 12px;
         }
         .readiness-item .k {
@@ -472,10 +515,13 @@
             .cv-title .tagline { color: #4b5563; }
             .cv-contact a { color: #2563eb; }
             .cv-contact .icon { color: #2563eb; }
+            .cv-profile { background: #f9fafb; border-left-color: #2563eb; border-color: #e5e7eb; }
+            .cv-profile p { color: #374151; }
             .cv-section .section-title { color: #2563eb; border-bottom-color: #d1d5db; }
             .cv-about p { color: #374151; }
             .skill-tag { background: #f3f4f6; border-color: #d1d5db; color: #1f2937; }
             .skill-tag i { color: #2563eb; }
+            .soft-skills span { background: #f3f4f6; border-color: #d1d5db; color: #4b5563; }
             .cert-card { background: #f9fafb; border-color: #e5e7eb; }
             .cert-card h4 { color: #111827; }
             .cert-card .issuer { color: #6b7280; }
@@ -527,16 +573,13 @@
             <div class="cv-title">
                 <h1 class="lang-es">Juan Antonio Rivera Rodriguez</h1>
                 <h1 class="lang-en hidden">Juan Antonio Rivera Rodriguez</h1>
-                <div class="subhead lang-es">Software Engineering · Cloud · IA · Automatización</div>
-                <div class="subhead lang-en hidden">Software Engineering · Cloud · AI · Automation</div>
+                <div class="subhead lang-es">Aspiring DevOps & Cloud Engineer</div>
+                <div class="subhead lang-en hidden">Aspiring DevOps & Cloud Engineer</div>
                 <div class="tagline lang-es">
-                    Estudiante de Ingeniería en Desarrollo de Software con enfoque en infraestructura cloud,
-                    inteligencia artificial, DevOps y WordPress. Disponible para mi primera oportunidad remota
-                    de tiempo completo.
+                    Estudiante de Ingeniería en Software · Construyendo infraestructura real con Docker, Linux y Cloud
                 </div>
                 <div class="tagline lang-en hidden">
-                    Software Engineering student focused on cloud infrastructure, AI, DevOps, and WordPress.
-                    Available for my first full-time remote junior role.
+                    Software Engineering Student · Building real infrastructure with Docker, Linux & Cloud
                 </div>
             </div>
             <div class="cv-contact">
@@ -561,37 +604,80 @@
             </div>
         </header>
 
+        <!-- ─── PERFIL / RESUMEN ─── -->
+        <div class="cv-profile">
+            <p class="lang-es">
+                <strong>Estudiante de Ingeniería en Software</strong> con pasión por la infraestructura cloud, la automatización y el desarrollo de sistemas robustos. 
+                He construido y puesto en producción un servidor multimedia con <strong>Docker</strong> y <strong>Cloudflare Tunnel</strong>, 
+                un tema <strong>WordPress</strong> 100% personalizado, y scripts de automatización con Bash y Python. 
+                Busco mi <strong>primera oportunidad junior</strong> en un equipo de Cloud, DevOps o desarrollo backend donde pueda aprender, aportar y crecer.
+            </p>
+            <p class="lang-en hidden">
+                <strong>Software Engineering student</strong> passionate about cloud infrastructure, automation, and building robust systems. 
+                I have built and put into production a media server with <strong>Docker</strong> and <strong>Cloudflare Tunnel</strong>, 
+                a 100% custom <strong>WordPress</strong> theme, and automation scripts with Bash and Python. 
+                Looking for my <strong>first junior opportunity</strong> in a Cloud, DevOps or backend development team where I can learn, contribute and grow.
+            </p>
+        </div>
+
         <!-- ═══ GRID ═══ -->
         <div class="cv-grid">
 
-            <!-- ─── ABOUT ─── -->
-            <div class="cv-section full-width">
-                <div class="section-title lang-es"><i class="fas fa-user"></i> Sobre Mí</div>
-                <div class="section-title lang-en hidden"><i class="fas fa-user"></i> About Me</div>
-                <div class="cv-about">
-                    <p class="lang-es">
-                        Estudio Ingeniería en Desarrollo de Software en la Universidad Tecmilenio, con enfoque en
-                        infraestructura cloud, automatización, inteligencia artificial y arquitectura de software.
-                        He construido temas WordPress desde cero, servidores Docker en producción, automatizado
-                        tareas con Bash y Python, y explorado aplicaciones de IA en proyectos personales.
-                    </p>
-                    <p class="lang-es">
-                        Mi portafolio incluye un servidor multimedia con Jellyfin expuesto con Cloudflare Tunnel,
-                        un tema WordPress 100% personalizado con Gutenberg blocks y Custom Post Types,
-                        scripts de automatización para backups y despliegues, y experimentos con APIs de IA
-                        y procesamiento de lenguaje natural. Todo documentado y subido a GitHub.
-                    </p>
-                    <p class="lang-en hidden">
-                        I'm studying Software Engineering at Universidad Tecmilenio, focusing on cloud infrastructure,
-                        automation, AI, and software architecture. I've built custom WordPress themes from scratch,
-                        Docker servers in production, automated tasks with Bash and Python, and explored AI
-                        applications in personal projects.
-                    </p>
-                    <p class="lang-en hidden">
-                        My portfolio includes a Jellyfin media server exposed via Cloudflare Tunnel, a 100% custom
-                        WordPress theme with Gutenberg blocks and Custom Post Types, automation scripts for backups
-                        and deployments, and experiments with AI APIs and natural language processing.
-                    </p>
+            <!-- ─── HABILIDADES TÉCNICAS ─── -->
+            <div class="cv-section">
+                <div class="section-title lang-es"><i class="fas fa-bolt"></i> Habilidades Técnicas</div>
+                <div class="section-title lang-en hidden"><i class="fas fa-bolt"></i> Technical Skills</div>
+                <div class="skills-grid">
+                    <span class="skill-tag"><i class="fab fa-docker"></i> Docker</span>
+                    <span class="skill-tag"><i class="fas fa-layer-group"></i> Docker Compose</span>
+                    <span class="skill-tag"><i class="fab fa-linux"></i> Linux</span>
+                    <span class="skill-tag"><i class="fas fa-cloud"></i> Cloudflare</span>
+                    <span class="skill-tag"><i class="fas fa-server"></i> Nginx</span>
+                    <span class="skill-tag"><i class="fab fa-wordpress"></i> WordPress</span>
+                    <span class="skill-tag"><i class="fab fa-php"></i> PHP</span>
+                    <span class="skill-tag"><i class="fas fa-code"></i> React</span>
+                    <span class="skill-tag"><i class="fab fa-js"></i> JavaScript</span>
+                    <span class="skill-tag"><i class="fab fa-python"></i> Python</span>
+                    <span class="skill-tag"><i class="fas fa-code"></i> Bash</span>
+                    <span class="skill-tag"><i class="fas fa-database"></i> SQL</span>
+                    <span class="skill-tag"><i class="fas fa-code-branch"></i> DevOps</span>
+                    <span class="skill-tag"><i class="fas fa-network-wired"></i> Networking</span>
+                    <span class="skill-tag"><i class="fas fa-shield-alt"></i> Seguridad</span>
+                    <span class="skill-tag"><i class="fas fa-git-alt"></i> Git</span>
+                    <span class="skill-tag"><i class="fab fa-aws"></i> AWS</span>
+                    <span class="skill-tag"><i class="fas fa-cogs"></i> WSL2</span>
+                    <span class="skill-tag"><i class="fas fa-gears"></i> systemd</span>
+                    <span class="skill-tag"><i class="fas fa-file-code"></i> YAML</span>
+                    <span class="skill-tag"><i class="fas fa-clock"></i> Cron</span>
+                    <span class="skill-tag"><i class="fas fa-fire"></i> Firewall</span>
+                    <span class="skill-tag"><i class="fas fa-flask"></i> Flask</span>
+                    <span class="skill-tag"><i class="fas fa-code"></i> REST APIs</span>
+                </div>
+                <!-- Habilidades blandas (del PDF) -->
+                <div style="margin-top:16px;">
+                    <div style="font-size:0.75rem; text-transform:uppercase; letter-spacing:1px; color:var(--muted); margin-bottom:6px;">Competencias</div>
+                    <div class="soft-skills">
+                        <span>CI/CD Pipelines</span>
+                        <span>Infrastructure as Code (IaC)</span>
+                        <span>Automation Scripting</span>
+                        <span>Problem Solving</span>
+                        <span>Documentation</span>
+                        <span>Self-Learning</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ─── EDUCACIÓN ─── -->
+            <div class="cv-section">
+                <div class="section-title lang-es"><i class="fas fa-graduation-cap"></i> Educación</div>
+                <div class="section-title lang-en hidden"><i class="fas fa-graduation-cap"></i> Education</div>
+                <div class="exp-item">
+                    <h4 class="lang-es">Ingeniería en Desarrollo de Software</h4>
+                    <h4 class="lang-en hidden">Software Engineering</h4>
+                    <div class="role">Universidad Tecmilenio · MAPS Model</div>
+                    <div class="period">2024 – Presente</div>
+                    <p class="lang-es">Especialización en curso: DevOps, Cloud, Arquitectura de Software. Aplicación práctica en proyectos de contenerización, automatización y desarrollo WordPress.</p>
+                    <p class="lang-en hidden">Current specialization: DevOps, Cloud, Software Architecture. Practical application in containerization, automation, and WordPress development projects.</p>
                 </div>
             </div>
 
@@ -678,56 +764,7 @@
                 </div>
             </div>
 
-            <!-- ─── SKILLS ─── -->
-            <div class="cv-section">
-                <div class="section-title lang-es"><i class="fas fa-bolt"></i> Habilidades Técnicas</div>
-                <div class="section-title lang-en hidden"><i class="fas fa-bolt"></i> Technical Skills</div>
-                <div class="skills-grid">
-                    <span class="skill-tag"><i class="fab fa-wordpress"></i> WordPress</span>
-                    <span class="skill-tag"><i class="fab fa-php"></i> PHP</span>
-                    <span class="skill-tag"><i class="fas fa-code"></i> React</span>
-                    <span class="skill-tag"><i class="fab fa-js"></i> JavaScript</span>
-                    <span class="skill-tag"><i class="fab fa-docker"></i> Docker</span>
-                    <span class="skill-tag"><i class="fas fa-layer-group"></i> Docker Compose</span>
-                    <span class="skill-tag"><i class="fab fa-linux"></i> Linux</span>
-                    <span class="skill-tag"><i class="fas fa-cloud"></i> Cloudflare</span>
-                    <span class="skill-tag"><i class="fas fa-code-branch"></i> DevOps</span>
-                    <span class="skill-tag"><i class="fas fa-network-wired"></i> Networking</span>
-                    <span class="skill-tag"><i class="fab fa-python"></i> Python</span>
-                    <span class="skill-tag"><i class="fab fa-html5"></i> HTML5</span>
-                    <span class="skill-tag"><i class="fab fa-css3-alt"></i> CSS3</span>
-                    <span class="skill-tag"><i class="fas fa-database"></i> SQL</span>
-                    <span class="skill-tag"><i class="fas fa-code"></i> Bash</span>
-                    <span class="skill-tag"><i class="fas fa-git-alt"></i> Git</span>
-                    <span class="skill-tag"><i class="fab fa-aws"></i> AWS</span>
-                    <span class="skill-tag"><i class="fas fa-shield-alt"></i> Seguridad</span>
-                    <span class="skill-tag"><i class="fas fa-server"></i> Nginx</span>
-                    <span class="skill-tag"><i class="fas fa-cogs"></i> WSL2</span>
-                    <span class="skill-tag"><i class="fas fa-gears"></i> systemd</span>
-                    <span class="skill-tag"><i class="fas fa-file-code"></i> YAML</span>
-                    <span class="skill-tag"><i class="fas fa-clock"></i> Cron</span>
-                    <span class="skill-tag"><i class="fas fa-fire"></i> Firewall</span>
-                    <span class="skill-tag"><i class="fas fa-flask"></i> Flask</span>
-                    <span class="skill-tag"><i class="fas fa-code"></i> REST APIs</span>
-                    <span class="skill-tag"><i class="fas fa-robot"></i> IA / ML</span>
-                </div>
-            </div>
-
-            <!-- ─── EDUCATION ─── -->
-            <div class="cv-section">
-                <div class="section-title lang-es"><i class="fas fa-graduation-cap"></i> Educación</div>
-                <div class="section-title lang-en hidden"><i class="fas fa-graduation-cap"></i> Education</div>
-                <div class="exp-item">
-                    <h4 class="lang-es">Ingeniería en Desarrollo de Software</h4>
-                    <h4 class="lang-en hidden">Software Engineering</h4>
-                    <div class="role">Universidad Tecmilenio · MAPS Model</div>
-                    <div class="period">2024 – Presente</div>
-                    <p class="lang-es">Especialización en curso: DevOps, Cloud, IA y Arquitectura de Software. Aplicación práctica en proyectos propios de contenerización, automatización, desarrollo WordPress e integración de IA.</p>
-                    <p class="lang-en hidden">Current specialization: DevOps, Cloud, AI, and Software Architecture. Practical application in own projects of containerization, automation, WordPress development, and AI integration.</p>
-                </div>
-            </div>
-
-            <!-- ─── CERTIFICATIONS ─── -->
+            <!-- ─── CERTIFICACIONES ─── -->
             <div class="cv-section full-width">
                 <div class="section-title lang-es"><i class="fas fa-certificate"></i> Certificaciones</div>
                 <div class="section-title lang-en hidden"><i class="fas fa-certificate"></i> Certifications</div>
@@ -746,17 +783,17 @@
                     <h4 class="lang-en hidden">Software Engineering Student</h4>
                     <div class="role lang-es">Universidad Tecmilenio · 2024 – Presente</div>
                     <div class="role lang-en hidden">Universidad Tecmilenio · 2024 – Present</div>
-                    <div class="period lang-es">Buscando primera posición junior en Cloud, DevOps, IA o WordPress</div>
-                    <div class="period lang-en hidden">Looking for a first junior role in Cloud, DevOps, AI, or WordPress</div>
+                    <div class="period lang-es">Buscando primera posición junior en Cloud, DevOps o WordPress</div>
+                    <div class="period lang-en hidden">Looking for a first junior role in Cloud, DevOps, or WordPress</div>
                     <p class="lang-es">
                         Construyo proyectos reales: temas WordPress personalizados, servidores Docker en producción,
-                        scripts de automatización, APIs REST y experimentos con IA. Busco mi primera posición junior
-                        en Cloud, DevOps, desarrollo WordPress o áreas relacionadas con inteligencia artificial.
+                        scripts de automatización y APIs REST. Busco mi primera posición junior
+                        en Cloud, DevOps o desarrollo WordPress, donde pueda aplicar lo que sé y seguir aprendiendo.
                     </p>
                     <p class="lang-en hidden">
                         I build real projects: custom WordPress themes, Docker servers in production, automation scripts,
-                        REST APIs, and AI experiments. Looking for my first junior role in Cloud, DevOps, WordPress
-                        development, or AI-related areas.
+                        and REST APIs. Looking for my first junior role in Cloud, DevOps, or WordPress development,
+                        where I can apply what I know and keep learning.
                     </p>
                 </div>
             </div>
@@ -775,7 +812,7 @@
                     <div class="readiness-item">
                         <div class="k lang-es">Zona horaria</div>
                         <div class="k lang-en hidden">Time zone</div>
-                        <div class="v lang-es">Mexico (UTC-6), flexible</div>
+                        <div class="v lang-es">México (UTC-6), flexible</div>
                         <div class="v lang-en hidden">Mexico (UTC-6), flexible overlap</div>
                     </div>
                     <div class="readiness-item">
@@ -787,8 +824,8 @@
                     <div class="readiness-item">
                         <div class="k lang-es">Stack objetivo</div>
                         <div class="k lang-en hidden">Target stack</div>
-                        <div class="v lang-es">Linux, Docker, Cloud, APIs, IA, WordPress</div>
-                        <div class="v lang-en hidden">Linux, Docker, Cloud, APIs, AI, WordPress</div>
+                        <div class="v lang-es">Linux, Docker, Cloud, APIs, WordPress</div>
+                        <div class="v lang-en hidden">Linux, Docker, Cloud, APIs, WordPress</div>
                     </div>
                 </div>
             </div>
@@ -830,16 +867,20 @@
         applyThemeLabel();
 
         // ─── CERTIFICACIONES ───
+        // Mezcla las certificaciones de tu PDF con las que ya tenías, priorizando las que aparecen en el PDF
         const certData = [
+            // Certificaciones del PDF
+            { name: 'Python Essentials 1', issuer: 'Cisco', img: 'https://images.credly.com/images/68c0b94d-f6ac-40b1-a0e0-921439eb092e/linkedin_thumb_image.png' },
+            { name: 'Fundamentos de Programación', issuer: 'Universidad Tecmilenio', img: 'https://images.credly.com/images/0871bc81-7152-4340-8367-8fbe3896c43f/linkedin_thumb_blob' },
+            { name: 'Computación en la Nube', issuer: 'Universidad Tecmilenio', img: 'https://images.credly.com/images/da491c56-6aef-47a6-9ae4-eb3bbfa9b60e/linkedin_thumb_blob' },
+            { name: 'AWS Cloud Operations', issuer: 'AWS Academy', img: 'https://images.credly.com/images/07e7ba52-aea4-431f-ba2d-a4113efd1d5a/linkedin_thumb_blob' },
+            // Otras relevantes de tu lista original
             { name: 'Desarrollo Full Stack', issuer: 'Universidad Tecmilenio', img: 'https://images.credly.com/images/fdecf3ca-1fa7-46c9-93c7-e203f718579b/linkedin_thumb_blob' },
             { name: 'Fundamentos de DevOps', issuer: 'Universidad Tecmilenio', img: 'https://images.credly.com/images/18d30937-4c1b-442c-83a1-543265bcf02f/linkedin_thumb_image.png' },
             { name: 'Gestión de Redes', issuer: 'Universidad Tecmilenio', img: 'https://images.credly.com/images/c0e5a9ce-f523-483c-8daa-4c37019ad7aa/linkedin_thumb_blob' },
-            { name: 'AWS Cloud Operations', issuer: 'Amazon Web Services', img: 'https://images.credly.com/images/07e7ba52-aea4-431f-ba2d-a4113efd1d5a/linkedin_thumb_blob' },
             { name: 'Networking Basics', issuer: 'Cisco', img: 'https://images.credly.com/images/5bdd6a39-3e03-4444-9510-ecff80c9ce79/linkedin_thumb_image.png' },
             { name: 'Web Development Fundamentals', issuer: 'IBM SkillsBuild', img: 'https://images.credly.com/images/0c1c6eed-818c-4f78-bfaa-7ea8704c863a/linkedin_thumb_image.png' },
             { name: 'Ciencia de Datos', issuer: 'Universidad Tecmilenio', img: 'https://images.credly.com/images/4013b068-cd88-443a-b109-292cad70e121/linkedin_thumb_blob' },
-            { name: 'Computación en la Nube', issuer: 'Universidad Tecmilenio', img: 'https://images.credly.com/images/da491c56-6aef-47a6-9ae4-eb3bbfa9b60e/linkedin_thumb_blob' },
-            { name: 'Fundamentos de Programación', issuer: 'Universidad Tecmilenio', img: 'https://images.credly.com/images/0871bc81-7152-4340-8367-8fbe3896c43f/linkedin_thumb_blob' },
             { name: 'Probabilidad y Estadística', issuer: 'Universidad Tecmilenio', img: 'https://images.credly.com/images/c187e134-e491-4f6b-9083-decb5e0bd265/linkedin_thumb_blob' },
             { name: 'Programación Orientada a Objetos', issuer: 'Universidad Tecmilenio', img: 'https://images.credly.com/images/dc201a38-6b7c-4ffd-85cc-0d337b22bc05/linkedin_thumb_blob' },
             { name: 'Sistemas Operativos', issuer: 'Universidad Tecmilenio', img: 'https://images.credly.com/images/24c929ed-4d14-4226-975f-116ee666d81e/linkedin_thumb_blob' },
@@ -847,8 +888,7 @@
             { name: 'Metodologías Ágiles', issuer: 'Universidad Tecmilenio', img: 'https://images.credly.com/images/2cc5aef9-1698-4a6c-9a22-6b81b1a6fe51/linkedin_thumb_blob' },
             { name: 'Bases de Datos', issuer: 'Universidad Tecmilenio', img: 'https://images.credly.com/images/3e8f3768-bb7b-426f-ba22-e214da27aca5/linkedin_thumb_blob' },
             { name: 'Estructura de Datos', issuer: 'Universidad Tecmilenio', img: 'https://images.credly.com/images/868fef28-16a5-4ed4-92f6-ef43da8fec4a/linkedin_thumb_blob' },
-            { name: 'Introduction to Data Science', issuer: 'Cisco', img: 'https://images.credly.com/images/b38a42e0-dc58-4ce2-b6c0-28d978e8aaad/linkedin_thumb_image.png' },
-            { name: 'Python Essentials 1', issuer: 'Cisco', img: 'https://images.credly.com/images/68c0b94d-f6ac-40b1-a0e0-921439eb092e/linkedin_thumb_image.png' }
+            { name: 'Introduction to Data Science', issuer: 'Cisco', img: 'https://images.credly.com/images/b38a42e0-dc58-4ce2-b6c0-28d978e8aaad/linkedin_thumb_image.png' }
         ];
 
         const VISIBLE_COUNT = 6;
@@ -860,7 +900,7 @@
             const items = showAll ? certData : certData.slice(0, VISIBLE_COUNT);
             certGrid.innerHTML = items.map(cert => `
                 <div class="cert-card">
-                    <img src="${cert.img}" alt="${cert.name}" onerror="this.onerror=null;this.src='https://placehold.co/72x72/1e2430/8e95a5?text=%F0%9F%8F%85'" />
+                    <img src="${cert.img}" alt="${cert.name}" onerror="this.onerror=null;this.src='https://placehold.co/72x72/1e2430/8e95a5?text=Cert'" />
                     <h4>${cert.name}</h4>
                     <div class="issuer">${cert.issuer}</div>
                 </div>
